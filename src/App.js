@@ -1,6 +1,8 @@
 import React from "react";
 import {BrowserRouter, Routes, Route } from "react-router-dom";
-import App2 from './App2'
+
+import Info from './Component/Info'
+import Test from './Component/ShowInfo/Show_Info'
 
 export default function App() {
 
@@ -8,7 +10,9 @@ export default function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<App2 />} />
+          <Route path='/' element={<Info />} />
+          <Route path='/info' element={<Info />} />
+          <Route path='/test' element={<Test />} />
         </Routes>
       </BrowserRouter>
     </div>
