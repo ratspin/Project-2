@@ -12,7 +12,7 @@ export default function ShowResult({ data }) {
     <RecipeListContainer>
       <Dialog onClose={() => console.log("")}  open={!!show}>     
         <DialogContent>
-          <DialogImage src={food_ingr} alt={food_name} />     
+          <DialogImage src={food_ingr} alt= {food_name} />       
         </DialogContent>
 
         <DialogActions>
@@ -22,7 +22,7 @@ export default function ShowResult({ data }) {
 
       <Dialog onClose={() => console.log("")}  open={!!show2}>
         <DialogContent>
-          <DialogImage src={food_nutr} alt={food_name} />
+          <DialogImage src={food_nutr} alt= {food_name} />     
         </DialogContent>
         <DialogActions>
           <SeeMoreText onClick={() => setShow2("")}>Close</SeeMoreText>
@@ -30,11 +30,12 @@ export default function ShowResult({ data }) {
       </Dialog>
 
       <RecipeContainer>
-        <CoverImage src={food_img} alt={food_name} />
+        <CoverImage src={food_img} alt= {food_name} />   
         <RecipeName>{food_name}</RecipeName>
         <SeeNutrients onClick={() => setShow(!show)}> ข้อมูลวัตถุดิบ</SeeNutrients>  
         <IngredientsText onClick={() => setShow2(!show2)} > ข้อมูลโภชนาการ </IngredientsText>
-        {/* <SeeMoreText> Calories </SeeMoreText> */}
+        {/* <SeeMoreText  > แนะนำอาหารทางเลือก </SeeMoreText> */}
+        {/* <> Calories </> */}
     </RecipeContainer>
   </RecipeListContainer>
   )

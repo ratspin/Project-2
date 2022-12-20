@@ -136,6 +136,7 @@ export default function Show_info() {
 
       setresults(food_db)
       console.log(food_db) 
+      console.log(results) 
   };
 
   return (
