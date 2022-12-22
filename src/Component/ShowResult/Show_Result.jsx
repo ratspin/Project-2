@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import {RecipeListContainer,RecipeContainer,CoverImage,RecipeName,IngredientsText,SeeMoreText,SeeNutrients,DialogImage} from './Styled'
-import Dialog from "@material-ui/core/Dialog";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogActions from "@material-ui/core/DialogActions";
+// import Dialog from "@material-ui/core/Dialog";
+// import DialogContent from "@material-ui/core/DialogContent";
+// import DialogActions from "@material-ui/core/DialogActions";
 
 export default function ShowResult({ data }) {
   const [show, setShow] = useState("");
   const [show2, setShow2] = useState("");
-  const { food_img,food_name,food_ingr,food_nutr} = data;
+  const { food_img,food_name,
+    // food_ingr,food_nutr
+  } = data;
+  
   return (
     <RecipeListContainer>
-      <Dialog onClose={() => console.log("")}  open={!!show}>     
+
+      {/* <Dialog onClose={() => console.log("")}  open={!!show}>     
         <DialogContent>
           <DialogImage src={food_ingr} alt= {food_name} />       
         </DialogContent>
@@ -27,7 +31,7 @@ export default function ShowResult({ data }) {
         <DialogActions>
           <SeeMoreText onClick={() => setShow2("")}>Close</SeeMoreText>
         </DialogActions>
-      </Dialog>
+      </Dialog> */}
 
       <RecipeContainer>
         <CoverImage src={food_img} alt= {food_name} />   

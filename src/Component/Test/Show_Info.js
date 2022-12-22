@@ -439,7 +439,7 @@ export default function Show_Info() {
               </div> 
           </div>  <br/> <br/>
 
-        <div className="container" > <input className="form-submit-button"  type="submit" value="บันทึกข้อมูล]" /> </div>
+        <div className="container" > <input className="form-submit-button"  type="submit" value="บันทึกข้อมูล" /> </div>
       </form>
 
       <RecipeListContainer> {results !== [] &&results.map((data) => {return <ShowResult data={data} />;})} </RecipeListContainer> 

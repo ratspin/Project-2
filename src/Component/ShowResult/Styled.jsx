@@ -10,8 +10,10 @@ export const RecipeListContainer = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 10px;
-    gap: 10px;
+    // padding: 10px;
+    // gap: 10px;
+    padding: 3px;
+    gap: 8px;
     justify-content: space-evenly;
 `;
 export  const RecipeContainer = styled.div`

@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React,{ useState } from "react";
 import ShowResult from "../ShowResult/Show_Result";
 import {RecipeListContainer} from './Styled'
 import './CheckboxLabels.css';
 
-var food = require('../../calculatetion/food.json');       
+var food = require('../../calculatetion/food.json'); 
 var calculate = require("../../calculatetion/calculate.js");
 
-export default function Show_info() {
+export default function Show_Info() {
   const [results, setresults] = useState([]);
   const [userinfo, setUserInfo] = useState({value: [0]});
   const [userinfo1, setUserInfo1] = useState ({value1: [0]});
@@ -39,13 +39,13 @@ export default function Show_info() {
   const [rating24, setratings24] = useState(4);
   const [rating25, setratings25] = useState(4);
   const [rating26, setratings26] = useState(4);
-  
+
   var handleChange  = (e) => {
-      const { checked} = e.target;
-      const { value } = userinfo;
-      if(value)
-      if (checked)    { setUserInfo({value: [5],}); console.log("โรคหัวใจ : checked") }
-      else            { setUserInfo({value: [0],}); console.log("โรคหัวใจ : unchecked")}      
+    const { checked} = e.target;
+    const { value } = userinfo;
+    if(value)
+    if (checked)    { setUserInfo({value: [5],}); console.log("โรคหัวใจ : checked") }
+    else            { setUserInfo({value: [0],}); console.log("โรคหัวใจ : unchecked")}      
   }; 
   const handleChange1 = (e) => {
       const { checked} = e.target;
@@ -108,345 +108,342 @@ export default function Show_info() {
                     กะเพรา: rating24,
                     ฝักทอง: rating25,
                     ผักกระเฉด: rating26
-            })
+  })
 
-  const onSubmit = (e) => { 
+
+  const onSubmit = (e) => {
     e.preventDefault();
-    var Result = calculate.similar_sort(calculate.Weight(user_rating),calculate.Weight(food) ,calculate.similar_score ,65)
-    // console.log(user_rating)
-    getresult(Result);
-  };
+    var result = calculate.similar_sort(calculate.Weight(user_rating),calculate.Weight(food) ,calculate.similar_score ,10)
 
-    const getresult = async (Result) => {
-      var food_img = []
-      var food_ingr = []
-      var food_db = []
-      var food_name = []
-      var food_similar = []
-      var food_nutr = []
+    var food_img = []
+    var food_ingr = []
+    var food_db = []
+    var food_name = []
+    var food_similar = []
+    var food_nutr = []
+
+    for(var i = 0; i < result.length; i++) {
+      food_img = "food/"+ result[i].food + ".png"
+      food_ingr = "ingredients/"+ result[i].food + ".png"
+      food_nutr = "nutrients/"+ result[i].food + ".png"
+      food_name = result[i].food
+      food_similar = result[i].similar_rate
+      food_db.push({food_img:food_img,food_nutr:food_nutr,food_ingr:food_ingr,food_name:food_name,food_similar:food_similar})
+    }
+
+    // console.log(food_db) 
+    setresults(food_db);
+    // console.log(results);
+  };
   
-      for(var i = 0; i < Result.length; i++) {
-        food_img = "food/"+ Result[i].food + ".png"
-        food_ingr = "ingredients/"+ Result[i].food + ".png"
-        food_nutr = "nutrients/"+ Result[i].food + ".png"
-        food_name = Result[i].food
-        food_similar = Result[i].similar_rate
-        food_db.push({food_img:food_img,food_nutr:food_nutr,food_ingr:food_ingr,food_name:food_name,food_similar:food_similar})
-      }
-
-      setresults(food_db)
-      console.log(food_db) 
-      console.log(results) 
-  };
 
   return (
-    <div>
-      <form onSubmit={onSubmit} >
-        <div className="container">
-          <div className="card">
-              <div className="card-header"> <p className="title">โปรดระบุโรคของคุณ</p> </div>
-              <div className="card-body">
-                  <input type="checkbox" onChange={handleChange}/>  <label>โรคหัวใจ</label>            <br/><br/>
-                  <input type="checkbox" onChange={handleChange1}/> <label>โรคเบาหวาน</label>         <br/><br/>
-                  <input type="checkbox" onChange={handleChange2}/> <label>โรคไต</label>              <br/><br/>
-                  <input type="checkbox" onChange={handleChange3}/> <label>โรคความดันโลหิตสูง</label>    <br/><br/>
-              </div>
-          </div>
-        </div>  <br/> <br/>
+    <div className="tmp">
 
-        <div className="container">
-              <div className="card">
-                  <div className="card-header"> <p className="title">โปรดระบุระดับความชอบแหล่งโปรตีนหลัก</p> </div>
-                  <div className="card-body">   
-
-                  <div class="select-container">
-                        <label>{protein[0]}</label>  
-                            <select  onChange = {(e) => {setratings0(e.target.value)}}  >
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/> </div>
-    
-                        <div class="select-container">
-                        <label>{protein[1]}</label>  
-                            <select  onChange = {(e) => {setratings1(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/> </div>
-    
-                        <div class="select-container">
-                        <label>{protein[2]}</label>
-                            <select  onChange = {(e) => {setratings2(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/> </div>
-    
-                        <div class="select-container">  
-                        <label>{protein[3]}</label> 
-                            <select  onChange = {(e) => {setratings3(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/> </div>
-    
-                        <div class="select-container"> 
-                        <label>{protein[4]}</label> 
-                            <select  onChange = {(e) => {setratings4(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/> </div>
-    
-                        <div class="select-container">  
-                        <label>{protein[5]}</label> 
-                            <select  onChange = {(e) => {setratings5(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/> </div>
-    
-                        <div class="select-container"> 
-                        <label>{protein[6]}</label>  
-                            <select  onChange = {(e) =>{setratings6(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/>  </div>
-                  </div>
-              </div> 
-        </div>  <br/> <br/>
-
+      <form onSubmit={onSubmit}>
         <div className="container">
             <div className="card">
-                <div className="card-header"> <p className="title">โปรดระบุระดับความชอบของผัก</p> </div>
-                <div className="card-body">   
-
-                        <div class="select-container">
-                        <label>{vegetable[0]}</label>  
-                            <select  onChange = {(e) => {setratings7(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/> </div>
-    
-                        <div class="select-container">
-                        <label>{vegetable[1]}</label>  
-                            <select  onChange = {(e) => {setratings8(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/> </div>
-    
-                        <div class="select-container">
-                        <label>{vegetable[2]}</label>
-                            <select  onChange = {(e) => {setratings9(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/> </div>
-    
-                        <div class="select-container">  
-                        <label>{vegetable[3]}</label> 
-                            <select  onChange = {(e) => {setratings10(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/> </div>
-    
-                        <div class="select-container"> 
-                        <label>{vegetable[4]}</label> 
-                            <select  onChange = {(e) => {setratings11(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/> </div>
-    
-                        <div class="select-container">  
-                        <label>{vegetable[5]}</label> 
-                            <select  onChange = {(e) => {setratings12(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/> </div>
-    
-                        <div class="select-container"> 
-                        <label>{vegetable[6]}</label>  
-                            <select  onChange = {(e) => {setratings13(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/>  </div>
-
-                        <div class="select-container"> 
-                        <label>{vegetable[7]}</label>  
-                            <select  onChange = {(e) => {setratings14(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/>  </div>
-                            
-                        <div class="select-container"> 
-                        <label>{vegetable[8]}</label>  
-                            <select  onChange = {(e) => {setratings15(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/>  </div>
-
-                        <div class="select-container">
-                        <label>{vegetable[9]}</label>  
-                            <select  onChange = {(e) => {setratings16(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/> </div>
-    
-                        <div class="select-container">
-                        <label>{vegetable[10]}</label>  
-                            <select  onChange = {(e) => {setratings17(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/> </div>
-    
-                        <div class="select-container">
-                        <label>{vegetable[11]}</label>
-                            <select  onChange = {(e) => {setratings18(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/> </div>
-    
-                        <div class="select-container">  
-                        <label>{vegetable[12]}</label> 
-                            <select  onChange = {(e) => {setratings19(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/> </div>
-    
-                        <div class="select-container"> 
-                        <label>{vegetable[13]}</label> 
-                            <select  onChange = {(e) => {setratings20(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/> </div>
-    
-                        <div class="select-container">  
-                        <label>{vegetable[14]}</label> 
-                            <select  onChange = {(e) => {setratings21(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/> </div>
-    
-                        <div class="select-container"> 
-                        <label>{vegetable[15]}</label>  
-                            <select  onChange = {(e) => {setratings22(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/>  </div>
-
-                        <div class="select-container"> 
-                        <label>{vegetable[16]}</label>  
-                            <select  onChange = {(e) => {setratings23(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/>  </div>
-                            
-                        <div class="select-container"> 
-                        <label>{vegetable[17]}</label>  
-                            <select  onChange = {(e) => {setratings24(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/>  </div>
-
-                        <div class="select-container"> 
-                        <label>{vegetable[18]}</label>  
-                            <select  onChange = {(e) =>{setratings25(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/>  </div>
-                            
-                        <div class="select-container"> 
-                        <label>{vegetable[19]}</label>  
-                            <select  onChange = {(e) => {setratings26(e.target.value)}}>
-                                <option value="4">ชอบที่สุด</option>
-                                <option value="3">ชอบมาก</option>
-                                <option value="2">ชอบ</option>
-                                <option value="1">ชอบน้อย</option>
-                                <option value="0">ไม่ชอบ</option>
-                            </select><br/> <br/>  </div>
+                <div className="card-header"> <p className="title">โปรดระบุโรคของคุณ</p> </div>
+                <div className="card-body">
+                    <input type="checkbox" onChange={handleChange}/>  <label>โรคหัวใจ</label>            <br/><br/>
+                    <input type="checkbox" onChange={handleChange1}/> <label>โรคเบาหวาน</label>         <br/><br/>
+                    <input type="checkbox" onChange={handleChange2}/> <label>โรคไต</label>              <br/><br/>
+                    <input type="checkbox" onChange={handleChange3}/> <label>โรคความดันโลหิตสูง</label>    <br/><br/>
                 </div>
-            </div> 
-        </div>  <br/> <br/>
+            </div>
+          </div>  <br/> <br/>
 
-        <div className="container" > <input className="form-submit-button"  type="submit" value="เรียบร้อย" /> </div>
+          <div className="container">
+                <div className="card">
+                    <div className="card-header"> <p className="title">โปรดระบุระดับความชอบแหล่งโปรตีนหลัก</p> </div>
+                    <div className="card-body">   
+
+                    <div class="select-container">
+                          <label>{protein[0]}</label>  
+                              <select  onChange = {(e) => {setratings0(e.target.value)}}  >
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/> </div>
+      
+                          <div class="select-container">
+                          <label>{protein[1]}</label>  
+                              <select  onChange = {(e) => {setratings1(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/> </div>
+      
+                          <div class="select-container">
+                          <label>{protein[2]}</label>
+                              <select  onChange = {(e) => {setratings2(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/> </div>
+      
+                          <div class="select-container">  
+                          <label>{protein[3]}</label> 
+                              <select  onChange = {(e) => {setratings3(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/> </div>
+      
+                          <div class="select-container"> 
+                          <label>{protein[4]}</label> 
+                              <select  onChange = {(e) => {setratings4(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/> </div>
+      
+                          <div class="select-container">  
+                          <label>{protein[5]}</label> 
+                              <select  onChange = {(e) => {setratings5(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/> </div>
+      
+                          <div class="select-container"> 
+                          <label>{protein[6]}</label>  
+                              <select  onChange = {(e) =>{setratings6(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/>  </div>
+                    </div>
+                </div> 
+          </div>  <br/> <br/>
+
+          <div className="container">
+              <div className="card">
+                  <div className="card-header"> <p className="title">โปรดระบุระดับความชอบของผัก</p> </div>
+                  <div className="card-body">   
+
+                          <div class="select-container">
+                          <label>{vegetable[0]}</label>  
+                              <select  onChange = {(e) => {setratings7(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/> </div>
+      
+                          <div class="select-container">
+                          <label>{vegetable[1]}</label>  
+                              <select  onChange = {(e) => {setratings8(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/> </div>
+      
+                          <div class="select-container">
+                          <label>{vegetable[2]}</label>
+                              <select  onChange = {(e) => {setratings9(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/> </div>
+      
+                          <div class="select-container">  
+                          <label>{vegetable[3]}</label> 
+                              <select  onChange = {(e) => {setratings10(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/> </div>
+      
+                          <div class="select-container"> 
+                          <label>{vegetable[4]}</label> 
+                              <select  onChange = {(e) => {setratings11(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/> </div>
+      
+                          <div class="select-container">  
+                          <label>{vegetable[5]}</label> 
+                              <select  onChange = {(e) => {setratings12(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/> </div>
+      
+                          <div class="select-container"> 
+                          <label>{vegetable[6]}</label>  
+                              <select  onChange = {(e) => {setratings13(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/>  </div>
+
+                          <div class="select-container"> 
+                          <label>{vegetable[7]}</label>  
+                              <select  onChange = {(e) => {setratings14(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/>  </div>
+                              
+                          <div class="select-container"> 
+                          <label>{vegetable[8]}</label>  
+                              <select  onChange = {(e) => {setratings15(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/>  </div>
+
+                          <div class="select-container">
+                          <label>{vegetable[9]}</label>  
+                              <select  onChange = {(e) => {setratings16(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/> </div>
+      
+                          <div class="select-container">
+                          <label>{vegetable[10]}</label>  
+                              <select  onChange = {(e) => {setratings17(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/> </div>
+      
+                          <div class="select-container">
+                          <label>{vegetable[11]}</label>
+                              <select  onChange = {(e) => {setratings18(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/> </div>
+      
+                          <div class="select-container">  
+                          <label>{vegetable[12]}</label> 
+                              <select  onChange = {(e) => {setratings19(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/> </div>
+      
+                          <div class="select-container"> 
+                          <label>{vegetable[13]}</label> 
+                              <select  onChange = {(e) => {setratings20(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/> </div>
+      
+                          <div class="select-container">  
+                          <label>{vegetable[14]}</label> 
+                              <select  onChange = {(e) => {setratings21(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/> </div>
+      
+                          <div class="select-container"> 
+                          <label>{vegetable[15]}</label>  
+                              <select  onChange = {(e) => {setratings22(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/>  </div>
+
+                          <div class="select-container"> 
+                          <label>{vegetable[16]}</label>  
+                              <select  onChange = {(e) => {setratings23(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/>  </div>
+                              
+                          <div class="select-container"> 
+                          <label>{vegetable[17]}</label>  
+                              <select  onChange = {(e) => {setratings24(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/>  </div>
+
+                          <div class="select-container"> 
+                          <label>{vegetable[18]}</label>  
+                              <select  onChange = {(e) =>{setratings25(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/>  </div>
+                              
+                          <div class="select-container"> 
+                          <label>{vegetable[19]}</label>  
+                              <select  onChange = {(e) => {setratings26(e.target.value)}}>
+                                  <option value="4">ชอบที่สุด</option>
+                                  <option value="3">ชอบมาก</option>
+                                  <option value="2">ชอบ</option>
+                                  <option value="1">ชอบน้อย</option>
+                                  <option value="0">ไม่ชอบ</option>
+                              </select><br/> <br/>  </div>
+                  </div>
+              </div> 
+          </div>  <br/> <br/>
+
+        <div className="container" > <input className="form-submit-button"  type="submit" value="บันทึกข้อมูล" /> </div>
       </form>
 
-      <RecipeListContainer>        
-        {results !== [] &&results.map((data) => {return <ShowResult data={data} />})}
-      </RecipeListContainer>
+      <RecipeListContainer> {results !== [] &&results.map((data) => {return <ShowResult data={data} />;})} </RecipeListContainer> 
     </div>
-   
-  )
-} 
+);
+}
+
