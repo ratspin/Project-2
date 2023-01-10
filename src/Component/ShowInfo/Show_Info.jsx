@@ -2,7 +2,7 @@ import React,{ useState } from "react";
 import Rating from '@mui/material/Rating';
 import './Show_Info.css';
 import { useNavigate } from 'react-router-dom';
-import {RecipeListContainer} from './Styled'
+import {RecipeListContainer,IconImg,IconBox} from './Styled'
 import ShowResult from "../ShowResult/Show_Result";
 var food = require('../../calculatetion/food.json'); 
 var calculate = require("../../calculatetion/calculate.js");
@@ -43,7 +43,7 @@ export default function Show_Info() {
     const [rating25, setratings25] = useState(0);
     const [rating26, setratings26] = useState(0);
 
-    // console.log(rating0)
+    console.log(food)
 
     var handleChange  = (e) => {
         const { checked} = e.target;
@@ -114,7 +114,7 @@ export default function Show_Info() {
                         ฝักทอง: rating25,
                         ผักกระเฉด: rating26
     })
-    console.log(user_rating);
+    // console.log(user_rating);
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -163,39 +163,53 @@ export default function Show_Info() {
                         <div className="card-body">   
 
                             <div class="select-container">
-                                <label>{protein[0]}</label>  
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating0} onChange={(event, newValue) => {setratings0(newValue);}}/>
-                            <br/> <br/> </div>
+                                <IconImg src="/icon/หมู.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{protein[0]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating0} onChange={(event, newValue) => {setratings0(newValue);}}/>
+                                </IconBox> 
+                            </div>
             
                             <div class="select-container">
-                                <label>{protein[1]}</label>  
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating1} onChange={(event, newValue) => {setratings1(newValue);}}/>
-                            <br/> <br/> </div>
+                                <IconImg src="/icon/ไก่.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{protein[1]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating1} onChange={(event, newValue) => {setratings1(newValue);}}/>
+                                </IconBox> 
+                            </div>
             
                             <div class="select-container">
-                                <label>{protein[2]}</label>
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating2} onChange={(event, newValue) => {setratings2(newValue);}}/>
-                            <br/> <br/> </div>
+                                <IconImg src="/icon/ปลา.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{protein[2]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating2} onChange={(event, newValue) => {setratings2(newValue);}}/>
+                                </IconBox> 
+                            </div>
             
                             <div class="select-container">
-                                <label>{protein[3]}</label>
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating3} onChange={(event, newValue) => {setratings3(newValue);}}/>
-                            <br/> <br/> </div>
+                                <IconImg src="/icon/กุ้ง.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{protein[3]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating3} onChange={(event, newValue) => {setratings3(newValue);}}/>
+                                </IconBox> 
+                            </div>
             
                             <div class="select-container">
-                                <label>{protein[4]}</label>
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating4} onChange={(event, newValue) => {setratings4(newValue);}}/>
-                            <br/> <br/> </div>
+                                <IconImg src="/icon/หมึก.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{protein[4]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating4} onChange={(event, newValue) => {setratings4(newValue);}}/>
+                                </IconBox> 
+                            </div>
             
                             <div class="select-container">
-                                <label>{protein[5]}</label>
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating5} onChange={(event, newValue) => {setratings5(newValue);}}/>
-                            <br/> <br/> </div>
+                                <IconImg src="/icon/วัว.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{protein[5]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating5} onChange={(event, newValue) => {setratings5(newValue);}}/>
+                                </IconBox> 
+                            </div>
             
                             <div class="select-container">
-                                <label>{protein[6]}</label>
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating6} onChange={(event, newValue) => {setratings6(newValue);}}/>
-                            <br/> <br/> </div>
+                                <IconImg src="/icon/ไข่.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{protein[6]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating6} onChange={(event, newValue) => {setratings6(newValue);}}/>
+                                </IconBox> 
+                            </div>
                         </div>
                     </div> 
                 </div>  <br/> <br/>
@@ -206,104 +220,144 @@ export default function Show_Info() {
                         <div className="card-body">   
 
                             <div class="select-container">
-                                <label>{vegetable[0]}</label>  
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating7} onChange={(event, newValue) => {setratings7(newValue);}}/>
-                            <br/> <br/> </div>
+                                <IconImg src="/icon/คะน้า.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{vegetable[0]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating7} onChange={(event, newValue) => {setratings7(newValue);}}/>
+                                </IconBox> 
+                            </div>
       
                             <div class="select-container">
-                                <label>{vegetable[1]}</label>  
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating8} onChange={(event, newValue) => {setratings8(newValue);}}/>
-                            <br/> <br/> </div>
+                                <IconImg src="/icon/เห็ด.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{vegetable[1]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating8} onChange={(event, newValue) => {setratings8(newValue);}}/>
+                                </IconBox> 
+                            </div>
       
                             <div class="select-container">
-                                <label>{vegetable[2]}</label>
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating9} onChange={(event, newValue) => {setratings9(newValue);}}/>
-                            <br/> <br/> </div>
+                                <IconImg src="/icon/ผักกาด.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{vegetable[2]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating9} onChange={(event, newValue) => {setratings9(newValue);}}/>
+                                </IconBox> 
+                            </div>
       
-                            <div class="select-container">  
-                                <label>{vegetable[3]}</label> 
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating10} onChange={(event, newValue) => {setratings10(newValue);}}/>
-                            <br/> <br/> </div>
+                            <div class="select-container">
+                                <IconImg src="/icon/มะเขือ.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{vegetable[3]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating10} onChange={(event, newValue) => {setratings10(newValue);}}/>
+                                </IconBox> 
+                            </div>
       
-                            <div class="select-container"> 
-                                <label>{vegetable[4]}</label> 
-                          <     Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating11} onChange={(event, newValue) => {setratings11(newValue);}}/>
-                            <br/> <br/> </div>
+                            <div class="select-container">
+                                <IconImg src="/icon/ขิง.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{vegetable[4]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating11} onChange={(event, newValue) => {setratings11(newValue);}}/>
+                                </IconBox> 
+                            </div>
       
-                            <div class="select-container">  
-                                <label>{vegetable[5]}</label> 
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating12} onChange={(event, newValue) => {setratings12(newValue);}}/>
-                            <br/> <br/> </div>
+                            <div class="select-container">
+                                <IconImg src="/icon/ฟัก.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{vegetable[5]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating12} onChange={(event, newValue) => {setratings12(newValue);}}/>
+                                </IconBox> 
+                            </div>
       
-                            <div class="select-container"> 
-                                <label>{vegetable[6]}</label>  
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating13} onChange={(event, newValue) => {setratings13(newValue);}}/>
-                            <br/> <br/> </div>
+                            <div class="select-container">
+                                <IconImg src="/icon/เม็ดมะม่วงหิมพานต์.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{vegetable[6]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating13} onChange={(event, newValue) => {setratings13(newValue);}}/>
+                                </IconBox> 
+                            </div>
 
-                            <div class="select-container"> 
-                                <label>{vegetable[7]}</label>  
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating14} onChange={(event, newValue) => {setratings14(newValue);}}/>
-                            <br/> <br/> </div>
+                            <div class="select-container">
+                                <IconImg src="/icon/บวบ.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{vegetable[7]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating14} onChange={(event, newValue) => {setratings14(newValue);}}/>
+                                </IconBox> 
+                            </div>
                               
-                            <div class="select-container"> 
-                                <label>{vegetable[8]}</label>  
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating15} onChange={(event, newValue) => {setratings15(newValue);}}/>
-                            <br/> <br/> </div>
+                            <div class="select-container">
+                                <IconImg src="/icon/หน่อไม้.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{vegetable[8]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating15} onChange={(event, newValue) => {setratings15(newValue);}}/>
+                                </IconBox> 
+                            </div>
 
                             <div class="select-container">
-                                <label>{vegetable[9]}</label>  
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating16} onChange={(event, newValue) => {setratings16(newValue);}}/>
-                            <br/> <br/> </div>
+                                <IconImg src="/icon/ตำลึง.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{vegetable[9]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating16} onChange={(event, newValue) => {setratings16(newValue);}}/>
+                                </IconBox> 
+                            </div>
       
                             <div class="select-container">
-                                <label>{vegetable[10]}</label>  
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating17} onChange={(event, newValue) => {setratings17(newValue);}}/>
-                            <br/> <br/> </div>
+                                <IconImg src="/icon/ชะอม.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{vegetable[10]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating17} onChange={(event, newValue) => {setratings17(newValue);}}/>
+                                </IconBox> 
+                            </div>
       
                             <div class="select-container">
-                                <label>{vegetable[11]}</label>
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating18} onChange={(event, newValue) => {setratings18(newValue);}}/>
-                            <br/> <br/> </div>
+                                <IconImg src="/icon/กะหล่ำปลี.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{vegetable[11]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating18} onChange={(event, newValue) => {setratings18(newValue);}}/>
+                                </IconBox> 
+                            </div>
       
-                            <div class="select-container">  
-                                <label>{vegetable[12]}</label> 
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating19} onChange={(event, newValue) => {setratings19(newValue);}}/>
-                            <br/> <br/> </div>
+                            <div class="select-container">
+                                <IconImg src="/icon/ถั่วงอก.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{vegetable[12]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating19} onChange={(event, newValue) => {setratings19(newValue);}}/>
+                                </IconBox> 
+                            </div>
       
-                            <div class="select-container"> 
-                                <label>{vegetable[13]}</label> 
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating20} onChange={(event, newValue) => {setratings20(newValue);}}/>
-                            <br/> <br/> </div>
+                            <div class="select-container">
+                                <IconImg src="/icon/ผักบุ้ง.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{vegetable[13]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating20} onChange={(event, newValue) => {setratings20(newValue);}}/>
+                                </IconBox> 
+                            </div>
       
-                            <div class="select-container">  
-                                <label>{vegetable[14]}</label> 
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating21} onChange={(event, newValue) => {setratings21(newValue);}}/>
-                            <br/> <br/> </div>
+                            <div class="select-container">
+                                <IconImg src="/icon/ไชโป้ว.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{vegetable[14]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating21} onChange={(event, newValue) => {setratings21(newValue);}}/>
+                                </IconBox> 
+                            </div>
       
-                            <div class="select-container"> 
-                                <label>{vegetable[15]}</label>  
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating22} onChange={(event, newValue) => {setratings22(newValue);}}/>
-                            <br/> <br/> </div>
+                            <div class="select-container">
+                                <IconImg src="/icon/บรอกโคลี.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{vegetable[15]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating22} onChange={(event, newValue) => {setratings22(newValue);}}/>
+                                </IconBox> 
+                            </div>
 
-                            <div class="select-container"> 
-                                <label>{vegetable[16]}</label>  
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating23} onChange={(event, newValue) => {setratings23(newValue);}}/>
-                            <br/> <br/> </div>
+                            <div class="select-container">
+                                <IconImg src="/icon/สะตอ.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{vegetable[16]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating23} onChange={(event, newValue) => {setratings23(newValue);}}/>
+                                </IconBox> 
+                            </div>
                               
-                            <div class="select-container"> 
-                                <label>{vegetable[17]}</label>  
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating24} onChange={(event, newValue) => {setratings24(newValue);}}/>
-                            <br/> <br/> </div>
+                            <div class="select-container">
+                                <IconImg src="/icon/กะเพรา.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{vegetable[17]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating24} onChange={(event, newValue) => {setratings24(newValue);}}/>
+                                </IconBox> 
+                            </div>
 
-                            <div class="select-container"> 
-                                <label>{vegetable[18]}</label>  
-                                 <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating25} onChange={(event, newValue) => {setratings25(newValue);}}/>
-                            <br/> <br/> </div>
+                            <div class="select-container">
+                                <IconImg src="/icon/ฝักทอง.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{vegetable[18]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating25} onChange={(event, newValue) => {setratings25(newValue);}}/>
+                                </IconBox> 
+                            </div>
                               
-                            <div class="select-container"> 
-                                <label>{vegetable[19]}</label>  
-                                <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating26} onChange={(event, newValue) => {setratings26(newValue);}}/>
-                            <br/> <br/> </div>
+                            <div class="select-container">
+                                <IconImg src="/icon/ผักกระเฉด.png" alt = "หมู"/> <label style={{ paddingTop: '30px'}}>{vegetable[19]}</label>
+                                <IconBox>
+                                    <Rating sx={{'& .MuiRating-iconFilled': {color: 'orange',},'& .MuiRating-iconFocus': {color: 'orange',}}}value={rating26} onChange={(event, newValue) => {setratings26(newValue);}}/>
+                                </IconBox> 
+                            </div>
                         </div>
                     </div> 
                 </div>  <br/> <br/>

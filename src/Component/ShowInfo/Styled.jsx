@@ -26,3 +26,12 @@ export const Button = styled.button`
     color: var(--color);
     z-index: 1;
 `;
+
+export const IconImg = styled.img`
+    width: 50px;
+    height: 50px;
+    padding-top: 10px;
+`
+export const IconBox = styled.div`
+    padding-top: 30px;
+`
