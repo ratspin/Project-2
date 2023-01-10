@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import {RecipeListContainer,RecipeContainer,CoverImage,RecipeName,IngredientsText,SeeMoreText,SeeNutrients,DialogImage} from './Styled'
+import {RecipeListContainer,RecipeContainer,CoverImage,RecipeName,IngredientsText,SeeNutrients,
+  // SeeMoreText,DialogImage
+} from './Styled'
 // import Dialog from "@material-ui/core/Dialog";
 // import DialogContent from "@material-ui/core/DialogContent";
 // import DialogActions from "@material-ui/core/DialogActions";
@@ -10,8 +12,8 @@ export default function ShowResult({ data }) {
   const { food_img,food_name,
     // food_ingr,food_nutr
   } = data;
-  
   return (
+    
     <RecipeListContainer>
 
       {/* <Dialog onClose={() => console.log("")}  open={!!show}>     

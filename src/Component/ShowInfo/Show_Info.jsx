@@ -1,14 +1,16 @@
 import React,{ useState } from "react";
 import Rating from '@mui/material/Rating';
-import ShowResult from "../ShowResult/Show_Result";
+import './Show_Info.css';
+import { useNavigate } from 'react-router-dom';
 import {RecipeListContainer} from './Styled'
-import './CheckboxLabels.css';
-
+import ShowResult from "../ShowResult/Show_Result";
 var food = require('../../calculatetion/food.json'); 
 var calculate = require("../../calculatetion/calculate.js");
 
 export default function Show_Info() {
+    const navigate = useNavigate();
     const [results, setresults] = useState([]);
+    const createPost = () =>{navigate('/profile',{state: {user_rating}})}
     const [userinfo, setUserInfo] = useState({value: [0]});
     const [userinfo1, setUserInfo1] = useState ({value1: [0]});
     const [userinfo2, setUserInfo2] = useState({value2: [0]});
@@ -41,11 +43,13 @@ export default function Show_Info() {
     const [rating25, setratings25] = useState(0);
     const [rating26, setratings26] = useState(0);
 
+    // console.log(rating0)
+
     var handleChange  = (e) => {
         const { checked} = e.target;
         const { value } = userinfo;
         if(value)
-        if (checked)    { setUserInfo({value: [5],}); console.log("โรคหัวใจ : checked") }
+        if (checked)    { setUserInfo({value: [5],}); console.log("โรคหัวใจ : checked ") }
         else            { setUserInfo({value: [0],}); console.log("โรคหัวใจ : unchecked")}      
     }; 
     const handleChange1 = (e) => {
@@ -110,11 +114,11 @@ export default function Show_Info() {
                         ฝักทอง: rating25,
                         ผักกระเฉด: rating26
     })
-
+    console.log(user_rating);
 
     const onSubmit = (e) => {
         e.preventDefault();
-        var result = calculate.similar_sort(calculate.Weight(user_rating),calculate.Weight(food) ,calculate.similar_score ,10)
+        var result = calculate.similar_sort(calculate.Weight(user_rating),calculate.Weight(food) ,calculate.similar_score ,20)
 
         var food_img = []
         var food_ingr = []
@@ -132,16 +136,15 @@ export default function Show_Info() {
         food_db.push({food_img:food_img,food_nutr:food_nutr,food_ingr:food_ingr,food_name:food_name,food_similar:food_similar})
         }
 
-        // console.log(food_db) 
         setresults(food_db);
-        // console.log(results);
+        console.log(food_db);
     };
-  
+    
 
     return (
         <div>
 
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit}   ><br/><br/><br/>
                 <div className="container">
                     <div className="card">
                         <div className="card-header"> <p className="title">โปรดระบุโรคของคุณ</p> </div>
@@ -305,11 +308,11 @@ export default function Show_Info() {
                     </div> 
                 </div>  <br/> <br/>
 
-                <div className="container" > <input className="form-submit-button"  type="submit" value="บันทึกข้อมูล" /> </div>
+                 <input type="submit" className="form-submit-button"   value="บันทึกข้อมูล" /><br/> <br/>
+               {/* <input type="submit" className="form-submit-button"   value="บันทึกข้อมูล" onDoubleClick={() =>{createPost()}}/><br/> <br/> */}
+                <div className="form-submit-button" onClick={() =>{createPost()}}>บันทึกข้อมูล</div><br/> <br/>
             </form>
-
             <RecipeListContainer> {results !== [] &&results.map((data) => {return <ShowResult data={data} />;})} </RecipeListContainer> 
-
         </div>
 );
 }
