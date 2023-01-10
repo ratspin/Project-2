@@ -1,5 +1,5 @@
-// import React, { useState } from "react";
 import React from "react";
+import { useLocation } from "react-router-dom";
 import {
   Container,
   RecipeListContainer,
@@ -9,30 +9,24 @@ import {
   SeeIngredients,
   SeeNutrients,
   SeeRecFood,
-  // SeeMoreText,DialogImage
 } from "./Styled";
-// import Dialog from "@material-ui/core/Dialog";
-// import DialogContent from "@material-ui/core/DialogContent";
-// import DialogActions from "@material-ui/core/DialogActions";
-import { useLocation } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
+import Modal1 from "../Modal/Modal_Ingredients";
+import Modal2 from "../Modal/Modal_Nutrients";
 
 export default function ShowResult() {
-  // const [show, setShow] = useState("");
+  const [openModal1, setOpenModal1] = React.useState(false);
+  const [openModal2, setOpenModal2] = React.useState(false);
 
   const { state } = useLocation();
-  var name = state.value;
+  const name = state.value;
 
-  var food_name = [];
-  var food_img = [];
-  var food_ingr = [];
-  var food_nutr = [];
-  var showinfo = [];
+  const food_name = name;
+  const food_img = "food/" + name + ".png";
+  const food_ingr = "ingredients/" + name + ".png";
+  const food_nutr = "nutrients/" + name + ".png";
+  const showinfo = [];
 
-  food_img = "food/" + name + ".png";
-  food_ingr = "ingredients/" + name + ".png";
-  food_nutr = "nutrients/" + name + ".png";
-  food_name = name;
   showinfo.push({
     food_img: food_img,
     food_nutr: food_nutr,
@@ -45,29 +39,29 @@ export default function ShowResult() {
     <Container>
       <NavBar /> <br />
       <RecipeListContainer>
-        {/* <Dialog onClose={() => console.log("")}  open={!!show}>     
-          <DialogContent>
-            <DialogImage src={food_ingr} alt= {food_name} />       
-          </DialogContent>
+        <Modal1
+          open={openModal1}
+          data={food_name}
+          onClose={() => setOpenModal1(false)}
+        />
 
-          <DialogActions>
-            <SeeMoreText onClick={() => setShow("")}>Close</SeeMoreText>
-          </DialogActions>
-        </Dialog> */}
+        <Modal2
+          open={openModal2}
+          data={food_name}
+          onClose={() => setOpenModal2(false)}
+        />
 
         <RecipeContainer>
           <CoverImage src={food_img} alt={food_name} />
           <RecipeName>{food_name}</RecipeName>
-          <SeeNutrients
-          // onClick={() => setShow(!show)}
-          >
-            {" "}
+          <SeeNutrients onClick={() => setOpenModal1(true)}>
             ข้อมูลวัตถุดิบ
           </SeeNutrients>
-          <SeeIngredients> ข้อมูลโภชนาการ </SeeIngredients>
+          <SeeIngredients onClick={() => setOpenModal2(true)}>
+            ข้อมูลโภชนาการ
+          </SeeIngredients>
           <SeeRecFood> แนะนำอาหารทางเลือก </SeeRecFood>
         </RecipeContainer>
-
       </RecipeListContainer>
     </Container>
   );
