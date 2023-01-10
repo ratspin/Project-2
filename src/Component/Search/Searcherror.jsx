@@ -96,17 +96,9 @@ export default function Search() {
       </ResultBox>     
 
       <RecipeListContainer>
-        <RecipeContainer>
-          <CoverImage src={food_img} alt={food_name} />
-          <RecipeName>{food_name}</RecipeName>
-          <SeeNutrients onClick={() => setOpenModal1(true)}>
-            ข้อมูลวัตถุดิบ
-          </SeeNutrients>
-          <SeeIngredients onClick={() => setOpenModal2(true)}>
-            ข้อมูลโภชนาการ
-          </SeeIngredients>
-          {/* <SeeRecFood> แนะนำอาหารทางเลือก </SeeRecFood> */}
-        </RecipeContainer>
+      <div style={{fontSize: '1.5rem',margin: '50px', }} >
+      ไม่มีผลลัพธ์ตรงกับที่คุณค้นหา
+        </div>              
       </RecipeListContainer>           
         
     </Container>
