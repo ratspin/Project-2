@@ -17,7 +17,7 @@ export default function Profile() {
   const createLink = () =>{navigate('/search',{state: [{value},{rating}]})}
   const createRec = () =>{navigate('/rec',{state: {rating}})}
   const createPlan = () =>{navigate('/plan',{state: {rating}})}
-  const createSearchImg = () =>{navigate('/plan',{state: {rating}})}
+  const createSearchImg = () =>{navigate('/SearchImg',{state: {rating}})}
   const rating = state.rating
   const navRef = useRef();
   console.log(rating);

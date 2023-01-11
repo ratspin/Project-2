@@ -81,7 +81,6 @@ nav {
     flex-direction: column;
     border: 1px solid gray;
 	width: 90%;
-	position: absolute;
   }
   
   .dropdown:empty {

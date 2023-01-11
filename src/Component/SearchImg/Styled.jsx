@@ -1,18 +1,22 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    padding: 0px;
     display: flex;
     flex-direction: column;
     text-align: center;
+    padding: 30px;
 `;
 
 export const RecipeListContainer = styled.div`
     display: flex;
-    flex-direction: column;
-    padding: 5px;
-    align-items: center;  
+    flex-direction: row;
+    padding: 10px;
+    /* flex-grow: 4;  */
+    gap: 20px; 
+    justify-content: center;
+    /* background-color: #5900ff; */
 `;
+
 export  const RecipeContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -20,9 +24,25 @@ export  const RecipeContainer = styled.div`
     width: 250px;
     box-shadow: 0 3px 10px 0 #aaa;
     border: 3px solid #f8ae1a;
+
+
 `;
 
+export const MealBox = styled.div`
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    font-size: x-large;
+    width: 270px;
+    /* background-color: #ff0000; */
+`;
 
+export const DayBox = styled.div`
+    display: flex;
+    /* background-color: #ff0000; */
+    justify-content: space-between;
+`;
 
 export  const CoverImage = styled.img`
   object-fit: cover;
@@ -55,6 +75,16 @@ export const SeeMoreText = styled.span`
   margin-bottom: 12px;
 `;
 
+export const IngredientsText = styled(SeeMoreText)`
+  color: green;
+  border: solid 1px green;
+`;
+
+export const SeeNewTab = styled(SeeMoreText)`
+  color: green;
+  border: solid 1px green;
+`;
+
 export const Placeholder = styled.img`
   width: 120px;
   height: 120px;
@@ -70,16 +100,6 @@ export const Seecalories = styled(SeeMoreText)`
 export const SeeNutrients = styled(SeeMoreText)`
   color: #5677fc;
   border: solid 1px #5677fc;
-`;
-
-export const SeeIngredients = styled(SeeMoreText)`
-  color: green;
-  border: solid 1px green;
-`;
-
-export const SeeRecFood = styled(SeeMoreText)`
-  color: orange;
-  border: solid 1px orange;
 `;
 
 
@@ -138,16 +158,6 @@ export const NavBox = styled.div`
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-`;
-
-
-export const ResultBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  // flex-wrap: wrap;
-  // gap: 10px;
-  padding: 50px;
-  // align-items: center;   
 `;
 
 export const Day = styled.div`
