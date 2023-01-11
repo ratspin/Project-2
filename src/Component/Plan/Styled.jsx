@@ -1,20 +1,22 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    /* padding-bottom: 50px; */
-    /* display: flex;
+    display: flex;
     flex-direction: column;
-    text-align: center; */
+    text-align: center;
+    padding: 30px;
 `;
 
 export const RecipeListContainer = styled.div`
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    padding: 30px;
-    gap: 10px;
-    justify-content: space-evenly;
+    padding: 10px;
+    /* flex-grow: 4;  */
+    gap: 20px; 
+    justify-content: center;
+    /* background-color: #5900ff; */
 `;
+
 export  const RecipeContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -23,7 +25,25 @@ export  const RecipeContainer = styled.div`
     box-shadow: 0 3px 10px 0 #aaa;
     border: 3px solid #f8ae1a;
 
+
 `;
+
+export const MealBox = styled.div`
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    font-size: x-large;
+    width: 270px;
+    /* background-color: #ff0000; */
+`;
+
+export const DayBox = styled.div`
+    display: flex;
+    /* background-color: #ff0000; */
+    justify-content: space-between;
+`;
+
 export  const CoverImage = styled.img`
   object-fit: cover;
   height: 250px;
@@ -138,4 +158,13 @@ export const NavBox = styled.div`
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
+`;
+
+export const Day = styled.div`
+  width: 15%;
+  margin-top: 1rem;
+  background-color: gray;
+  color: #fff;
+  padding: 20px 1rem;
+  font-size: 1.5rem;
 `;

@@ -7,14 +7,14 @@ export const Container = styled.div`
 `;
 
 export const RecipeListContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* flex-wrap: wrap; */
     // padding: 10px;
     // gap: 10px;
-    padding: 3px;
-    gap: 8px;
-    justify-content: space-evenly;
+    /* padding: 3px; */
+    /* gap: 8px; */
+    /* justify-content: space-evenly; */
 `;
 export  const RecipeContainer = styled.div`
     display: flex;
@@ -56,7 +56,7 @@ export const SeeMoreText = styled.span`
   margin-bottom: 12px;
 `;
 
-export const IngredientsText = styled(SeeMoreText)`
+export const SeeIngredients = styled(SeeMoreText)`
   color: green;
   border: solid 1px green;
 `;

@@ -43,35 +43,35 @@ export default function Show_Info() {
     const [rating25, setratings25] = useState(0);
     const [rating26, setratings26] = useState(0);
 
-    console.log(food)
+    // console.log(food)
 
     var handleChange  = (e) => {
         const { checked} = e.target;
         const { value } = userinfo;
         if(value)
-        if (checked)    { setUserInfo({value: [5],}); console.log("โรคหัวใจ : checked ") }
-        else            { setUserInfo({value: [0],}); console.log("โรคหัวใจ : unchecked")}      
+        if (checked)    { setUserInfo({value: [5],});} //console.log("โรคหัวใจ : checked ") }
+        else            { setUserInfo({value: [0],});} //console.log("โรคหัวใจ : unchecked")}      
     }; 
     const handleChange1 = (e) => {
         const { checked} = e.target;
         const { value1 } = userinfo1;
         if(value1)
-        if (checked)    { setUserInfo1({value1: [5],}); console.log("โรคเบาหวาน : checked") }
-        else            { setUserInfo1({value1: [0],}); console.log("โรคเบาหวาน : unchecked")}  
+        if (checked)    { setUserInfo1({value1: [5],});} //console.log("โรคเบาหวาน : checked") }
+        else            { setUserInfo1({value1: [0],});} //console.log("โรคเบาหวาน : unchecked")}  
     }; 
     const handleChange2 = (e) => {
         const { checked} = e.target;
         const { value2 } = userinfo2;
         if(value2)
-        if (checked)    { setUserInfo2({value2: [5],}); console.log("โรคไต : checked") }
-        else            { setUserInfo2({value2: [0],}); console.log("โรคไต : unchecked")}  
+        if (checked)    { setUserInfo2({value2: [5],});} //console.log("โรคไต : checked") }
+        else            { setUserInfo2({value2: [0],});} //console.log("โรคไต : unchecked")}  
     }; 
     const handleChange3 = (e) => {
         const { checked} = e.target;
         const { value3 } = userinfo3;
         if(value3)
-        if (checked)    { setUserInfo3({value3: [5],}); console.log("โรคความดันโลหิตสูง : checked") }
-        else            { setUserInfo3({value3: [0],}); console.log("โรคความดันโลหิตสูง : unchecked")}  
+        if (checked)    { setUserInfo3({value3: [5],});} //console.log("โรคความดันโลหิตสูง : checked") }
+        else            { setUserInfo3({value3: [0],});} //console.log("โรคความดันโลหิตสูง : unchecked")}  
     }; 
 
     var protein =   [   "หมู","ไก่",'ปลา',"กุ้ง","หมึก","เนื้อวัว","ไข่"]
@@ -147,7 +147,7 @@ export default function Show_Info() {
             <form onSubmit={onSubmit}   ><br/><br/><br/>
                 <div className="container">
                     <div className="card">
-                        <div className="card-header"> <p className="title">โปรดระบุโรคของคุณ</p> </div>
+                        <div className="card-header"> <p className="title">ระบุโรคของคุณ</p> </div>
                         <div className="card-body">
                             <input type="checkbox" onChange={handleChange}/>  <label>โรคหัวใจ</label>            <br/><br/>
                             <input type="checkbox" onChange={handleChange1}/> <label>โรคเบาหวาน</label>         <br/><br/>
@@ -159,7 +159,7 @@ export default function Show_Info() {
 
                 <div className="container">
                     <div className="card">
-                        <div className="card-header"> <p className="title">โปรดระบุระดับความชอบแหล่งโปรตีนหลัก</p> </div> 
+                        <div className="card-header"> <p className="title">ระบุเนื้อสัตว์ที่คุณชื่นชอบ</p> </div> 
                         <div className="card-body">   
 
                             <div class="select-container">
@@ -216,7 +216,7 @@ export default function Show_Info() {
 
                 <div className="container">
                     <div className="card">
-                        <div className="card-header"> <p className="title">โปรดระบุระดับความชอบของผัก</p> </div>
+                        <div className="card-header"> <p className="title">ระบุผักที่คุณชื่นชอบ</p> </div>
                         <div className="card-body">   
 
                             <div class="select-container">
