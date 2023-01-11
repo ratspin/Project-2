@@ -85,7 +85,7 @@ export default function Plan() {
       <NavContainer>
         <Header>
           <NavBox>
-            <a href="/"><RecipeImage src="/food4U.png" /></a>
+            <a href="/profile"><RecipeImage src="/food4U.png" /></a>
             <nav ref={navRef}>
               <div className="a" onClick={() => createRec()} > แนะนำอาหาร</div>
               <div className="a" onClick={() => createPlan()} >วางแผนการรับประทาน</div>
