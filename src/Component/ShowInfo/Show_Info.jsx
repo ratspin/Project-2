@@ -362,7 +362,7 @@ export default function Show_Info() {
                     </div> 
                 </div>  <br/> <br/>
 
-                 <input type="submit" className="form-submit-button"   value="บันทึกข้อมูล" /><br/> <br/>
+                 {/* <input type="submit" className="form-submit-button"   value="บันทึกข้อมูล" /><br/> <br/> */}
                {/* <input type="submit" className="form-submit-button"   value="บันทึกข้อมูล" onDoubleClick={() =>{createPost()}}/><br/> <br/> */}
                 <div className="form-submit-button" onClick={() =>{createPost()}}>บันทึกข้อมูล</div><br/> <br/>
             </form>

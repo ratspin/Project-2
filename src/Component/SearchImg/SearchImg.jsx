@@ -1,5 +1,5 @@
 import React, { useRef,useState, useEffect } from "react";
-import {Container,RecipeListContainer,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage,MealBox,DayBox,Day} from './Styled'
+import {Container,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage} from './Styled'
 import { useLocation, useNavigate} from 'react-router-dom';
 import "./NavBar.css";
 
@@ -14,6 +14,7 @@ export default function SearchImg() {
   const createRec = () =>{navigate('/rec',{state: {rating}})}
   const createPlan = () =>{navigate('/plan',{state: {rating}})}
   const createSearchImg = () =>{navigate('/SearchImg',{state: {rating}})}
+  const createSearch = () =>{navigate('/search',{state: {rating}})}
   const rating = state.rating
   const navRef = useRef();
 
@@ -41,13 +42,14 @@ export default function SearchImg() {
     const newImageUrls = [];
     images.forEach((image) => newImageUrls.push(URL.createObjectURL(image)));
     setImageURLs(newImageUrls);
+    console.log("Images : ", images[0].name);
   }, [images]);
 
   function onImageChange(e) {
     setImages([...e.target.files]);
   }
-
-  console.log("Images : ", images);
+  console.log(images);
+  
 
 
  
@@ -82,14 +84,16 @@ export default function SearchImg() {
 
       <Container>
         
-        <div >
+        <div style={{ height: '500px'}}> 
           <input type="file" accept="image/*" onChange={onImageChange} /> <br/><br/><br/>
           รองรับไฟล์รูปภาพนามสกุล .jpg, .png <br/>โดย crop เฉพาะส่วนอาหาร ขนาดไม่เกิน 1 MB <br/><br/>
           {imageURLs.map((imageSrc, idx) => (
           <img key={idx} width="360" height="360" src={imageSrc} alt = "555" />
           ))}
         </div>
+        <div className="form-submit-button" onClick={() => createSearch()} >วิเคราะห์ภาพ</div><br/> <br/>
       </Container>
+
   </div>
   )
 }

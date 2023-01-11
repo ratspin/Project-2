@@ -51,22 +51,34 @@ export default function Plan() {
 
   var meal = [{meal:"มื้อเช้า",img:"/meal/1.png"},{meal:"มื้อเที่ยง",img:"/meal/2.png"}, {meal:"มื้อเย็น",img:"/meal/3.png"}]
 
-  function random_item(items){ 
-    return items[Math.floor(Math.random()*items.length)];     
-  }
-  var day1 = [];
-  var day2 = [];
-  var day3 = [];
-  for(var j = 0; j < 3 ; j ++){
-    day1.push(random_item(result))
-    day2.push(random_item(result))
-    day3.push(random_item(result))
-  }
+    function random_item() {
+        var items = [Math.floor(Math.random()*result.length)]; 
+        return result.splice(items,1)[0]
+            
+      }
+   
+    var day1 = [];
+    var day2 = [];
+    var day3 = [];
+
+        for(var j = 0; j < 3 ; j ++){
+          day1.push(random_item(result))
+          day2.push(random_item(result))
+          day3.push(random_item(result))
+        }
+  
+    
+    
+  
+
+
+  console.log(result[0], result[1], result[2], result[3]);
+
   const text = meal.map((d,index) => {return <MealBox key={index}>
                                                 <img style={{ margin: "5px",height: "50px", width: "50px" }} key={index} src = {d.img} alt={d.meal}/> 
                                                 <div style={{ marginTop: "15px" }} key={index}>{d.meal}</div> 
                                               </MealBox> })
-  // console.log(meal);
+
  
   return (
     <div>
