@@ -8,15 +8,14 @@ import ShowResult from "../ShowResult/Show_Result"
 
 export default function Rec() {
   const [value, setValue] = useState("");
+  const {state} = useLocation();
   const navigate = useNavigate();
-  const createLink = () =>{navigate('/search',{state: {value}})}
+  const createLink = () =>{navigate('/search',{state: [{value},{rating}]})}
   const createRec = () =>{navigate('/rec',{state: {rating}})}
   const createPlan = () =>{navigate('/plan',{state: {rating}})}
-  const navRef = useRef();
-
-  const {state} = useLocation();
+  const createSearchImg = () =>{navigate('/plan',{state: {rating}})}
   const rating = state.rating
-  console.log(rating);
+  const navRef = useRef();
 
   var data = require("../../calculatetion/food.json");
   var fooddb = require('../../calculatetion/food.json'); 
@@ -62,8 +61,8 @@ export default function Rec() {
             <a href="/"><RecipeImage src="/food4U.png" /></a>
             <nav ref={navRef}>
               <div className="a" onClick={() => createRec()} > แนะนำอาหาร</div>
-              <div className="a" onClick={() => createPlan()} > วางแผนการรับประทาน</div>
-              <a href="/plan">ค้นหาด้วยรูป</a>
+              <div className="a" onClick={() => createPlan()} >วางแผนการรับประทาน</div>
+              <div className="a" onClick={() => createSearchImg()} >ค้นหาด้วยรูป</div>
             </nav>
             {/* <button className="nav-btn nav-close-btn" onClick={showNavbar}><FaTimes /></button> */}
 

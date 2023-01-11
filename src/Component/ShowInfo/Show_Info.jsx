@@ -10,7 +10,7 @@ var calculate = require("../../calculatetion/calculate.js");
 export default function Show_Info() {
     const navigate = useNavigate();
     const [results, setresults] = useState([]);
-    const createPost = () =>{navigate('/profile',{state: {user_rating}})}
+    const createPost = () =>{navigate('/profile',{state: {rating}})}
     const [userinfo, setUserInfo] = useState({value: [0]});
     const [userinfo1, setUserInfo1] = useState ({value1: [0]});
     const [userinfo2, setUserInfo2] = useState({value2: [0]});
@@ -80,8 +80,8 @@ export default function Show_Info() {
                         "ชะอม","กะหล่ำปลี","ถั่วงอก","ผักบุ้ง","ไชโป้ว",
                         "บรอกโคลี","สะตอ","กะเพรา","ฝักทอง","ผักกระเฉด"]
 
-    var user_rating = []
-    user_rating.push({  อาหาร: "User",
+    var rating = []
+    rating.push({  อาหาร: "User",
                         โรคหัวใจ: userinfo.value[0],
                         โรคเบาหวาน: userinfo1.value1[0],
                         โรคไต: userinfo2.value2[0],
@@ -114,11 +114,11 @@ export default function Show_Info() {
                         ฝักทอง: rating25,
                         ผักกระเฉด: rating26
     })
-    // console.log(user_rating);
+    console.log(rating);
 
     const onSubmit = (e) => {
         e.preventDefault();
-        var result = calculate.similar_sort(calculate.Weight(user_rating),calculate.Weight(food) ,calculate.similar_score ,20)
+        var result = calculate.similar_sort(calculate.Weight(rating),calculate.Weight(food) ,calculate.similar_score ,20)
 
         var food_img = []
         var food_ingr = []

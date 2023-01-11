@@ -14,10 +14,11 @@ export default function Profile() {
   const [value, setValue] = useState("");
   const {state} = useLocation();
   const navigate = useNavigate();
-  const createLink = () =>{navigate('/search',{state: {value}})}
+  const createLink = () =>{navigate('/search',{state: [{value},{rating}]})}
   const createRec = () =>{navigate('/rec',{state: {rating}})}
   const createPlan = () =>{navigate('/plan',{state: {rating}})}
-  const rating = state.user_rating
+  const createSearchImg = () =>{navigate('/plan',{state: {rating}})}
+  const rating = state.rating
   const navRef = useRef();
   console.log(rating);
 
@@ -26,7 +27,6 @@ export default function Profile() {
     var food = data[i]["อาหาร"];
     name.push({ name: food });
   }
- 
   const onSearch = (searchTerm) => {
     setValue(searchTerm);
     console.log("search ", searchTerm);
@@ -79,20 +79,16 @@ export default function Profile() {
 
   return (
     <div>
-    <NavContainer>
-      <Header>
-        <NavBox>
-          {/* <button className="nav-btn" onClick={showNavbar}><FaBars /></button> */}
-          <a href="/"><RecipeImage src="/food4U.png" /></a>
-          <nav ref={navRef}>
-            {/* <a href="/rec">แนะนำอาหาร</a>  */}
-            <div className="a" onClick={() => createRec()} > แนะนำอาหาร</div>
-            <div className="a" onClick={() => createPlan()} >วางแผนการรับประทาน</div>
-            <a href="/plan">ค้นหาด้วยรูป</a>
-          </nav>
-          {/* <button className="nav-btn nav-close-btn" onClick={showNavbar}><FaTimes /></button> */}
-
-        </NavBox>
+      <NavContainer>
+        <Header>
+          <NavBox>
+            <a href="/"><RecipeImage src="/food4U.png" /></a>
+            <nav ref={navRef}>
+              <div className="a" onClick={() => createRec()} > แนะนำอาหาร</div>
+              <div className="a" onClick={() => createPlan()} >วางแผนการรับประทาน</div>
+              <div className="a" onClick={() => createSearchImg()} >ค้นหาด้วยรูป</div>
+            </nav>
+          </NavBox>
         <div>
           <SearchBox>
             <SearchIcon src="/search-icon.svg" onClick={() => onLink(value)}/>
@@ -107,8 +103,8 @@ export default function Profile() {
               <div style={{ cursor: 'pointer' }} onClick={() => onSearch(item.name)} key={item.name}>{item.name}</div>))}
           </div>
         </div>
-      </Header>
-    </NavContainer>
+        </Header>
+      </NavContainer> 
 
       <Container>
         <Box>

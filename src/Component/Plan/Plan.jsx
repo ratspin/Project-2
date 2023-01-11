@@ -7,14 +7,14 @@ import ShowResult from "../ShowResult/Show_Result"
 
 export default function Plan() {
   const [value, setValue] = useState("");
+  const {state} = useLocation();
   const navigate = useNavigate();
-  const createLink = () =>{navigate('/search',{state: {value}})}
+  const createLink = () =>{navigate('/search',{state: [{value},{rating}]})}
   const createRec = () =>{navigate('/rec',{state: {rating}})}
   const createPlan = () =>{navigate('/plan',{state: {rating}})}
-  const navRef = useRef();
-
-  const {state} = useLocation();
+  const createSearchImg = () =>{navigate('/plan',{state: {rating}})}
   const rating = state.rating
+  const navRef = useRef();
 
   var data = require("../../calculatetion/food.json");
   var fooddb = require('../../calculatetion/food.json'); 
@@ -62,9 +62,9 @@ export default function Plan() {
     day2.push(random_item(result))
     day3.push(random_item(result))
   }
-  const text = meal.map((d,index) => {return <MealBox>
+  const text = meal.map((d,index) => {return <MealBox key={index}>
                                                 <img style={{ margin: "5px",height: "50px", width: "50px" }} key={index} src = {d.img} alt={d.meal}/> 
-                                                <div style={{ marginTop: "15px" }}key={index}>{d.meal}</div> 
+                                                <div style={{ marginTop: "15px" }} key={index}>{d.meal}</div> 
                                               </MealBox> })
   // console.log(meal);
  
@@ -76,8 +76,8 @@ export default function Plan() {
             <a href="/"><RecipeImage src="/food4U.png" /></a>
             <nav ref={navRef}>
               <div className="a" onClick={() => createRec()} > แนะนำอาหาร</div>
-              <div className="a" onClick={() => createPlan()} > วางแผนการรับประทาน</div>
-              <a href="/plan">ค้นหาด้วยรูป</a>
+              <div className="a" onClick={() => createPlan()} >วางแผนการรับประทาน</div>
+              <div className="a" onClick={() => createSearchImg()} >ค้นหาด้วยรูป</div>
             </nav>
           </NavBox>
           <div>
