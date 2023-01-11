@@ -3,8 +3,8 @@ var similar_score  = function(x,y){
     var sum = [];
     var tmp = [];
     var W1 = 5
-    var W2 = 4
-    var W3 = 3
+    var W2 = 1
+    var W3 = 1
     
         for(var key in y)   sum.push(Math.pow((y[key] - x[key]),2))
      

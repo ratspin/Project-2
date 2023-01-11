@@ -5,7 +5,7 @@ var calculate = require("./calculate.js");
 var weight_user = calculate.Weight(user) 
 var weight_food = calculate.Weight(food) 
 var similar = calculate.similar_score 
-var result = calculate.similar_sort(weight_user,weight_food,similar,10)
+var result = calculate.similar_sort(weight_user,weight_food,similar,20)
 
 
 // console.log(user)
