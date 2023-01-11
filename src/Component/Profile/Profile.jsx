@@ -13,8 +13,10 @@ export default function Profile() {
 
   const [value, setValue] = useState("");
   const {state} = useLocation();
-  const Navigate = useNavigate();
-  const createLink = () =>{Navigate('/search',{state: {value}})}
+  const navigate = useNavigate();
+  const createLink = () =>{navigate('/search',{state: {value}})}
+  const createRec = () =>{navigate('/rec',{state: {rating}})}
+  const createPlan = () =>{navigate('/plan',{state: {rating}})}
   const rating = state.user_rating
   const navRef = useRef();
   console.log(rating);
@@ -24,29 +26,17 @@ export default function Profile() {
     var food = data[i]["อาหาร"];
     name.push({ name: food });
   }
-
-  const onChange = (event) => {
-    setValue(event.target.value);
-    console.log("searchbox :", event.target.value);
-  };
-
+ 
   const onSearch = (searchTerm) => {
     setValue(searchTerm);
-    console.log("search :", searchTerm);
+    console.log("search ", searchTerm);
   };
 
   const onLink = (searchTerm) => {
     setValue(searchTerm);
     createLink()
-    console.log("searchlink :", searchTerm);
+    console.log("search onLink :", searchTerm);
   };
-
-  const show = name.filter((item) => {
-    return value.toLowerCase() === ""
-      ? item
-      : item.name.toLowerCase().includes(value);
-  });
-  console.log(show);
 
   // var MaxC2 = {} 
   // var MaxC3 = {} 
@@ -89,33 +79,36 @@ export default function Profile() {
 
   return (
     <div>
-      <NavContainer>
-        <Header>
-          <NavBox>
-            {/* <button className="nav-btn" onClick={showNavbar}><FaBars /></button> */}
-            <a href="/"><RecipeImage src="/food4U.png" /></a>
-            <nav ref={navRef}>
-              <a href="/rec">แนะนำอาหาร</a>
-              <a href="/plan">วางแผนการรับประทาน</a>
-              <a href="/plan">ค้นหาด้วยรูป</a>
-            </nav>
-            {/* <button className="nav-btn nav-close-btn" onClick={showNavbar}><FaTimes /></button> */}
+    <NavContainer>
+      <Header>
+        <NavBox>
+          {/* <button className="nav-btn" onClick={showNavbar}><FaBars /></button> */}
+          <a href="/"><RecipeImage src="/food4U.png" /></a>
+          <nav ref={navRef}>
+            {/* <a href="/rec">แนะนำอาหาร</a>  */}
+            <div className="a" onClick={() => createRec()} > แนะนำอาหาร</div>
+            <div className="a" onClick={() => createPlan()} >วางแผนการรับประทาน</div>
+            <a href="/plan">ค้นหาด้วยรูป</a>
+          </nav>
+          {/* <button className="nav-btn nav-close-btn" onClick={showNavbar}><FaTimes /></button> */}
 
-          </NavBox>
-          <div>
-            <SearchBox>
-              <SearchIcon src="/search-icon.svg" onClick={() => onLink(value)}/>
-              <SearchInput placeholder="Search" type="text"value={value} onChange={onChange}/>
-            </SearchBox>
-            <div className="dropdown">
-              {show.filter((item) => {const searchTerm = value.toLowerCase();const Name = item.name.toLowerCase();
-                  return (searchTerm &&Name.startsWith(searchTerm) &&Name !== searchTerm);}).slice(0, 10).map((item) => (
-                  <div className="dropdown-row"onClick={() => onSearch(item.name)} key={item.name}>{item.name}</div>
-                ))}
-            </div>
+        </NavBox>
+        <div>
+          <SearchBox>
+            <SearchIcon src="/search-icon.svg" onClick={() => onLink(value)}/>
+            <SearchInput placeholder="Search" type="text"value={value} onChange={(e) => setValue(e.target.value)}/>
+          </SearchBox>
+          <div className="dropdown">
+          {name.filter((item) => {
+            const searchTerm = value.toLowerCase();
+            const fullName = item.name.toLowerCase();
+              return (searchTerm &&fullName.startsWith(searchTerm) &&fullName !== searchTerm);}).slice(0, 10)
+              .map((item) => (
+              <div style={{ cursor: 'pointer' }} onClick={() => onSearch(item.name)} key={item.name}>{item.name}</div>))}
           </div>
-        </Header>
-      </NavContainer> 
+        </div>
+      </Header>
+    </NavContainer>
 
       <Container>
         <Box>
@@ -171,7 +164,7 @@ export default function Profile() {
           <br/>
           <br/>
         </Box>
-        <div className="form-submit-button" onClick={() => Navigate("/info")} >แก้ไขข้อมูล</div><br/> <br/>
+        <div className="form-submit-button" onClick={() => navigate("/info")} >แก้ไขข้อมูล</div><br/> <br/>
       </Container>
     </div>
   )

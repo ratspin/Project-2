@@ -32,7 +32,7 @@ export const TitleContainer = styled.div`
 
 export const Title = styled.div`
     display: flex;
-    justifyContent: center:
+    justifyContent: center;
 `;
 
 export const Button = styled.div`

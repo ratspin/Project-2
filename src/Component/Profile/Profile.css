@@ -8,13 +8,14 @@
 	--textColor: rgb(0, 0, 0);
 }
 
-nav a {
+.a {
 	margin: 10px;
 	color: var(--textColor);
 	text-decoration: none;
+	cursor: pointer;
 }
 
-nav a:hover {
+.a:hover {
 	color: var(--secondaryColor);
 }
 
