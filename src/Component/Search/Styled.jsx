@@ -17,7 +17,7 @@ export  const RecipeContainer = styled.div`
     display: flex;
     flex-direction: column;
     padding: 10px;
-    width: 250px;
+    width: 500px;
     box-shadow: 0 3px 10px 0 #aaa;
     border: 3px solid #f8ae1a;
 `;
@@ -26,7 +26,7 @@ export  const RecipeContainer = styled.div`
 
 export  const CoverImage = styled.img`
   object-fit: cover;
-  height: 250px;
+  height: 100%;
 `;
 
 export  const DialogImage = styled.img`
@@ -35,15 +35,18 @@ export  const DialogImage = styled.img`
 `;
 
 export const RecipeName = styled.span`
-  font-size: 18px;
+  font-size: 25px;
   font-weight: 600;
   color: black;
-  margin: 10px 0;
-  white-space: nowrap;
+  /* margin: 10px 0; */
+  /* white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; */
   text-align: center;
+  margin-bottom:  10px;
   `;
+
+
 export const SeeMoreText = styled.span`
   color: #eb3300;
   font-size: 18px;
@@ -153,6 +156,7 @@ export const ResultBox = styled.div`
 export const Day = styled.div`
   width: 15%;
   margin-top: 1rem;
+  margin-left: 1rem;
   background-color: gray;
   color: #fff;
   padding: 20px 1rem;

@@ -37,18 +37,29 @@ export default function SearchImg() {
     console.log("search onLink :", searchTerm);
   };
 
+
+
   useEffect(() => {
     if (images.length < 1) return;
     const newImageUrls = [];
     images.forEach((image) => newImageUrls.push(URL.createObjectURL(image)));
     setImageURLs(newImageUrls);
-    console.log("Images : ", images[0].name);
+    // console.log("Images : ", images[0].name);
+    var foodname
+    foodname = images[0].name
+    var len = foodname.length
+    var food = foodname.slice(0,len-4)
+    setValue(food)
+    // console.log(food);
+    // console.log(value);
   }, [images]);
 
   function onImageChange(e) {
     setImages([...e.target.files]);
   }
-  console.log(images);
+
+  
+  // console.log(rating);
   
 
 
@@ -58,7 +69,7 @@ export default function SearchImg() {
       <NavContainer>
         <Header>
           <NavBox>
-            <a href="/profile"><RecipeImage src="/food4U.png" /></a>
+            <a href="/info"><RecipeImage src="/food4U.png" /></a>
             <nav ref={navRef}>
               <div className="a" onClick={() => createRec()} > แนะนำอาหาร</div>
               <div className="a" onClick={() => createPlan()} >วางแผนการรับประทาน</div>
@@ -88,7 +99,7 @@ export default function SearchImg() {
           <input type="file" accept="image/*" onChange={onImageChange} /> <br/><br/><br/>
           รองรับไฟล์รูปภาพนามสกุล .jpg, .png <br/>โดย crop เฉพาะส่วนอาหาร ขนาดไม่เกิน 1 MB <br/><br/>
           {imageURLs.map((imageSrc, idx) => (
-          <img key={idx} width="360" height="360" src={imageSrc} alt = "555" />
+          <img key={idx} width="100%" height="360" src={imageSrc} alt = "555" />
           ))}
         </div>
         <div className="form-submit-button" onClick={() => createSearch()} >วิเคราะห์ภาพ</div><br/> <br/>

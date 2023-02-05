@@ -58,7 +58,7 @@ export default function Rec() {
         <Header>
           <NavBox>
             {/* <button className="nav-btn" onClick={showNavbar}><FaBars /></button> */}
-            <a href="/profile"><RecipeImage src="/food4U.png" /></a>
+            <a href="/info"><RecipeImage src="/food4U.png" /></a>
             <nav ref={navRef}>
               <div className="a" onClick={() => createRec()} > แนะนำอาหาร</div>
               <div className="a" onClick={() => createPlan()} >วางแผนการรับประทาน</div>

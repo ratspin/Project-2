@@ -1,15 +1,17 @@
 import React, { useRef,useState } from "react";
 import { useLocation,useNavigate } from "react-router-dom";
-import {Container,RecipeListContainer,RecipeContainer,CoverImage,RecipeName,SeeIngredients,SeeNutrients,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage,ResultBox,Day} from "./Styled";
-import Modal1 from "../Modal/Modal_Ingredients";
-import Modal2 from "../Modal/Modal_Nutrients";
+import {Container,RecipeListContainer,RecipeContainer,CoverImage,RecipeName,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage,Day
+// ,ResultBox,SeeIngredients,SeeNutrients
+} from "./Styled";
+// import Modal1 from "../Modal/Modal_Ingredients";
+// import Modal2 from "../Modal/Modal_Nutrients";
 import "./Search.css";
 // import { FaBars, FaTimes } from "react-icons/fa";
 var data = require("../../calculatetion/food.json");
 
 export default function Search() {
-  const [openModal1, setOpenModal1] = React.useState(false);
-  const [openModal2, setOpenModal2] = React.useState(false);
+  // const [openModal1, setOpenModal1] = React.useState(false);
+  // const [openModal2, setOpenModal2] = React.useState(false);
 
   const [value, setValue] = useState("");
   const {state} = useLocation();
@@ -63,7 +65,7 @@ export default function Search() {
       <Header>
         <NavBox>
           {/* <button className="nav-btn" onClick={showNavbar}><FaBars /></button> */}
-          <a href="/profile"><RecipeImage src="/food4U.png" /></a>
+          <a href="/info"><RecipeImage src="/food4U.png" /></a>
           <nav ref={navRef}>
             <div className="a" onClick={() => createRec()} > แนะนำอาหาร</div>
             <div className="a" onClick={() => createPlan()} >วางแผนการรับประทาน</div>
@@ -89,27 +91,41 @@ export default function Search() {
       </Header>
     </NavContainer>
 
+    {/* <Modal1 open={openModal1} data={food_name} onClose={() => setOpenModal1(false)}/>
+    <Modal2 open={openModal2} data={food_name} onClose={() => setOpenModal2(false)}/>  */}
+
 
     <Container>
-      <ResultBox> 
-        <Modal1 open={openModal1} data={food_name} onClose={() => setOpenModal1(false)}/>
-        <Modal2 open={openModal2} data={food_name} onClose={() => setOpenModal2(false)}/> 
-        <Day >ผลลัพธ์การค้นหา</Day>
-      </ResultBox>     
 
-      <RecipeListContainer>
-        <RecipeContainer>
-          <CoverImage src={food_img} alt={food_name} />
-          <RecipeName>{food_name}</RecipeName>
-          <SeeNutrients onClick={() => setOpenModal1(true)}>
+        <Day >ผลลัพธ์การค้นหา</Day>      <RecipeName>{food_name}</RecipeName>
+
+
+
+          <RecipeListContainer>
+            <RecipeContainer>
+                <CoverImage src={food_img} alt={food_name} />
+            </RecipeContainer> <br/>
+            <RecipeContainer>
+                <CoverImage src={food_ingr} alt={food_name} />
+            </RecipeContainer> <br/>
+            <RecipeContainer>
+                <CoverImage src={food_nutr} alt={food_name} />
+            </RecipeContainer> <br/>
+          </RecipeListContainer>
+
+
+
+      {/* <RecipeListContainer>
+        <RecipeContainer> */}
+          {/* <SeeNutrients onClick={() => setOpenModal1(true)}>
             ข้อมูลวัตถุดิบ
           </SeeNutrients>
           <SeeIngredients onClick={() => setOpenModal2(true)}>
             ข้อมูลโภชนาการ
-          </SeeIngredients>
+          </SeeIngredients> */}
           {/* <SeeRecFood> แนะนำอาหารทางเลือก </SeeRecFood> */}
-        </RecipeContainer>
-      </RecipeListContainer>           
+        {/* </RecipeContainer>
+      </RecipeListContainer>            */}
         
     </Container>
     </div>

@@ -10,7 +10,7 @@ var calculate = require("../../calculatetion/calculate.js");
 export default function Show_Info() {
     const navigate = useNavigate();
     const [results, setresults] = useState([]);
-    const createPost = () =>{navigate('/profile',{state: {rating}})}
+    const createPost = () =>{navigate('/rec',{state: {rating}})}
     const [userinfo, setUserInfo] = useState({value: [0]});
     const [userinfo1, setUserInfo1] = useState ({value1: [0]});
     const [userinfo2, setUserInfo2] = useState({value2: [0]});
@@ -43,7 +43,7 @@ export default function Show_Info() {
     const [rating25, setratings25] = useState(0);
     const [rating26, setratings26] = useState(0);
 
-    // console.log(food)
+  
 
     var handleChange  = (e) => {
         const { checked} = e.target;
@@ -80,6 +80,8 @@ export default function Show_Info() {
                         "ชะอม","กะหล่ำปลี","ถั่วงอก","ผักบุ้ง","ไชโป้ว",
                         "บรอกโคลี","สะตอ","กะเพรา","ฝักทอง","ผักกระเฉด"]
 
+                       
+
     var rating = []
     rating.push({  อาหาร: "User",
                         โรคหัวใจ: userinfo.value[0],
@@ -114,7 +116,7 @@ export default function Show_Info() {
                         ฝักทอง: rating25,
                         ผักกระเฉด: rating26
     })
-    console.log(rating);
+    // console.log(rating);
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -138,6 +140,13 @@ export default function Show_Info() {
 
         setresults(food_db);
         console.log(food_db);
+    };
+
+
+    const Alert = () => {
+        if(rating0 === 0 || rating1 === 0 || rating2 === 0  || rating3 === 0 || rating4 === 0 || rating5 === 0 || rating6 === 0 || rating7 === 0 || rating8 === 0 || rating9 === 0 || rating10 === 0 || rating11 === 0 || rating12 === 0 || rating13 === 0 || rating14 === 0 || rating15 === 0 || rating16 === 0 || rating17 === 0 || rating18 === 0 || rating19 === 0 || rating20 === 0 || rating21 === 0 || rating22 === 0 || rating23 === 0 || rating24 === 0 || rating25 === 0 || rating26 === 0 )  alert("โปรดระบุข้อมูลให้ครบถ้วน")
+        else createPost()
+        // createPost()
     };
     
 
@@ -364,7 +373,7 @@ export default function Show_Info() {
 
                  {/* <input type="submit" className="form-submit-button"   value="บันทึกข้อมูล" /><br/> <br/> */}
                {/* <input type="submit" className="form-submit-button"   value="บันทึกข้อมูล" onDoubleClick={() =>{createPost()}}/><br/> <br/> */}
-                <div className="form-submit-button" onClick={() =>{createPost()}}>บันทึกข้อมูล</div><br/> <br/>
+                <div className="form-submit-button" onClick={() =>{Alert()}}>บันทึกข้อมูล</div><br/> <br/>
             </form>
             <RecipeListContainer> {results !== [] &&results.map((data) => {return <ShowResult data={data} />;})} </RecipeListContainer> 
         </div>
