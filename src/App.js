@@ -10,7 +10,7 @@ import Search from './Component/Search/Search'
 import Home from './Component/Home/Home'
 import Profile from './Component/Profile/Profile'
 import Plan from './Component/Plan/Plan'
-import SearchImg from './Component/SearchImg/SearchImg'
+import Upload from './Component/Upload/Upload'
 
 
 export default function App() {
@@ -29,7 +29,7 @@ export default function App() {
           <Route path='/Search' element={<Search />} />
           <Route path='/Profile' element={<Profile />} />
           <Route path='/Plan' element={<Plan />} />
-          <Route path='/SearchImg' element={<SearchImg />} />
+          <Route path='/Upload' element={<Upload/>} />
         </Routes>
       </BrowserRouter>
     </div>
