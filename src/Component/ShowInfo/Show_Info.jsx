@@ -144,9 +144,9 @@ export default function Show_Info() {
 
 
     const Alert = () => {
-        if(rating0 === 0 || rating1 === 0 || rating2 === 0  || rating3 === 0 || rating4 === 0 || rating5 === 0 || rating6 === 0 || rating7 === 0 || rating8 === 0 || rating9 === 0 || rating10 === 0 || rating11 === 0 || rating12 === 0 || rating13 === 0 || rating14 === 0 || rating15 === 0 || rating16 === 0 || rating17 === 0 || rating18 === 0 || rating19 === 0 || rating20 === 0 || rating21 === 0 || rating22 === 0 || rating23 === 0 || rating24 === 0 || rating25 === 0 || rating26 === 0 )  alert("โปรดระบุข้อมูลให้ครบถ้วน")
-        else createPost()
-        // createPost()
+        // if(rating0 === 0 || rating1 === 0 || rating2 === 0  || rating3 === 0 || rating4 === 0 || rating5 === 0 || rating6 === 0 || rating7 === 0 || rating8 === 0 || rating9 === 0 || rating10 === 0 || rating11 === 0 || rating12 === 0 || rating13 === 0 || rating14 === 0 || rating15 === 0 || rating16 === 0 || rating17 === 0 || rating18 === 0 || rating19 === 0 || rating20 === 0 || rating21 === 0 || rating22 === 0 || rating23 === 0 || rating24 === 0 || rating25 === 0 || rating26 === 0 )  alert("โปรดระบุข้อมูลให้ครบถ้วน")
+        // else createPost()
+        createPost()
     };
     
 

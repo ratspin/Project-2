@@ -17,7 +17,7 @@ export default function Profile() {
   const createLink = () =>{navigate('/search',{state: [{value},{rating}]})}
   const createRec = () =>{navigate('/rec',{state: {rating}})}
   const createPlan = () =>{navigate('/plan',{state: {rating}})}
-  const createSearchImg = () =>{navigate('/SearchImg',{state: {rating}})}
+  const createUpload = () =>{navigate('/Upload',{state: {rating}})}
   const rating = state.rating
   const navRef = useRef();
   console.log(rating);
@@ -257,7 +257,7 @@ export default function Profile() {
             <nav ref={navRef}>
               <div className="a" onClick={() => createRec()} > แนะนำอาหาร</div>
               <div className="a" onClick={() => createPlan()} >วางแผนการรับประทาน</div>
-              <div className="a" onClick={() => createSearchImg()} >ค้นหาด้วยรูป</div>
+              <div className="a" onClick={() => createUpload()} >ค้นหาด้วยรูป</div>
             </nav>
           </NavBox>
         <div>

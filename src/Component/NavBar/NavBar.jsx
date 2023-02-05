@@ -42,7 +42,7 @@ export default function NavBar() {
       <Header>
         <NavBox>
           {/* <button className="nav-btn" onClick={showNavbar}><FaBars /></button> */}
-          <a href="/"><RecipeImage src="/food4U.png" /></a>
+          <a href="/info"><RecipeImage src="/food4U.png" /></a>
           <nav ref={navRef}>
             <a href="/rec">แนะนำอาหาร</a>
             <a href="/plan">วางแผนการรับประทาน</a>

@@ -13,7 +13,7 @@ export default function Rec() {
   const createLink = () =>{navigate('/search',{state: [{value},{rating}]})}
   const createRec = () =>{navigate('/rec',{state: {rating}})}
   const createPlan = () =>{navigate('/plan',{state: {rating}})}
-  const createSearchImg = () =>{navigate('/SearchImg',{state: {rating}})}
+  const createUpload = () =>{navigate('/Upload',{state: {rating}})}
   const rating = state.rating
   const navRef = useRef();
 
@@ -62,7 +62,7 @@ export default function Rec() {
             <nav ref={navRef}>
               <div className="a" onClick={() => createRec()} > แนะนำอาหาร</div>
               <div className="a" onClick={() => createPlan()} >วางแผนการรับประทาน</div>
-              <div className="a" onClick={() => createSearchImg()} >ค้นหาด้วยรูป</div>
+              <div className="a" onClick={() => createUpload()} >ค้นหาด้วยรูป</div>
             </nav>
             {/* <button className="nav-btn nav-close-btn" onClick={showNavbar}><FaTimes /></button> */}
 

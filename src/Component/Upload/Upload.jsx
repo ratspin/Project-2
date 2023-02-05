@@ -3,7 +3,7 @@ import {Container,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,Re
 import { useLocation, useNavigate} from 'react-router-dom';
 import "./NavBar.css";
 
-export default function SearchImg() {
+export default function Upload() {
   const [images, setImages] = useState([]);
   const [imageURLs, setImageURLs] = useState([]);
 

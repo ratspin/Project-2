@@ -1,8 +1,8 @@
 import React, { useRef,useState } from "react";
 import { useLocation,useNavigate } from "react-router-dom";
-import {Container,RecipeListContainer,RecipeContainer,CoverImage,RecipeName,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage,Day
-// ,ResultBox,SeeIngredients,SeeNutrients
-} from "./Styled";
+import {Container,RecipeListContainer,RecipeContainer,CoverImage,RecipeName,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage,
+  // SeeIngredients,SeeNutrients,ResultBox,
+  Day} from "./Styled";
 // import Modal1 from "../Modal/Modal_Ingredients";
 // import Modal2 from "../Modal/Modal_Nutrients";
 import "./Search.css";
@@ -19,12 +19,12 @@ export default function Search() {
   const createLink = () =>{navigate('/search',{state: [{value},{rating}]})}
   const createRec = () =>{navigate('/rec',{state: {rating}})}
   const createPlan = () =>{navigate('/plan',{state: {rating}})}
-  const createSearchImg = () =>{navigate('/SearchImg',{state: {rating}})}
+  const createUpload = () =>{navigate('/Upload',{state: {rating}})}
   const rating = state[1].rating
   const search_name = state[0].value;
   const navRef = useRef();
   console.log(search_name);
-  console.log(rating);
+  // console.log(rating);
   
   var name = [];
   for (var i = 0; i < data.length; i++) {
@@ -56,7 +56,7 @@ export default function Search() {
     food_ingr: food_ingr,
     food_name: food_name,
   });
-  // console.log(search_name);
+  // console.log(food_img);
 
   return (
     <div>
@@ -69,7 +69,7 @@ export default function Search() {
           <nav ref={navRef}>
             <div className="a" onClick={() => createRec()} > แนะนำอาหาร</div>
             <div className="a" onClick={() => createPlan()} >วางแผนการรับประทาน</div>
-            <div className="a" onClick={() => createSearchImg()} >ค้นหาด้วยรูป</div>
+            <div className="a" onClick={() => createUpload()} >ค้นหาด้วยรูป</div>
           </nav>
           {/* <button className="nav-btn nav-close-btn" onClick={showNavbar}><FaTimes /></button> */}
 
@@ -91,15 +91,9 @@ export default function Search() {
       </Header>
     </NavContainer>
 
-    {/* <Modal1 open={openModal1} data={food_name} onClose={() => setOpenModal1(false)}/>
-    <Modal2 open={openModal2} data={food_name} onClose={() => setOpenModal2(false)}/>  */}
-
-
     <Container>
 
         <Day >ผลลัพธ์การค้นหา</Day>      <RecipeName>{food_name}</RecipeName>
-
-
 
           <RecipeListContainer>
             <RecipeContainer>
@@ -114,6 +108,9 @@ export default function Search() {
           </RecipeListContainer>
 
 
+
+      {/* <Modal1 open={openModal1} data={food_name} onClose={() => setOpenModal1(false)}/>
+      <Modal2 open={openModal2} data={food_name} onClose={() => setOpenModal2(false)}/>  */}
 
       {/* <RecipeListContainer>
         <RecipeContainer> */}
