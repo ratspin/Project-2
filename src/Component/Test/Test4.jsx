@@ -1,48 +1,23 @@
-// import React from 'react';
+import React from 'react';
+import imageToBase64 from 'image-to-base64/browser';
 
-// import FileBase64 from './Test5';
+
+export default function Test4() {
+
+    imageToBase64("food/ปลาเก๋าลวกจิ้ม.png") // Path to the image
+    .then((response) => {
+            console.log(response); // "cGF0aC90by9maWxlLmpwZw=="
+        }
+    )
+    .catch((error) => {
+            console.log(error); // Logs an error if there was one
+        }
+    )
 
 
-// export default class Test4 extends React.Component {
-//   constructor() {super()
-//     this.state = {
-//       files: []
-//     }
-//   }
+    return (
+        <>5555</>
 
-//   getFiles(files){
-//     this.setState({ files: files })
-//   }
+    );
 
-//   render() {
-    
-//     return (
-//       <div>
-
-//         <h1 >React File to Base64 Converter</h1>
-
-//         <div >
-//           <p > * Try To Upload Some Image~</p>
-          
-//           <FileBase64 multiple={ true } onDone={ this.getFiles.bind(this) } />
-//         </div>
-
-//         <div >
-//           { this.state.files.map((file,i) => {return <img key={i} src={file.base64} />}) }<img src=""  />
-//         </div>
-
-//         { this.state.files.length !== 0 ?
-//           <div>
-//             <h3 >Callback Object</h3>
-//             <div >
-//               <pre>{ JSON.stringify(this.state.files, null, 2) }</pre>
-//             </div>
-//           </div>
-//         : null }
-//       </div>
-//     )
-
-//   }
-
-// }
-
+}
