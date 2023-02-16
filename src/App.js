@@ -1,7 +1,7 @@
 import React from "react";
 import {BrowserRouter, Routes, Route } from "react-router-dom";
 import Info from './Component/ShowInfo/Show_Info'
-import Test from './Component/Test/Test4'
+import Test from './Component/Test/Test2'
 import NavBar from './Component/NavBar/NavBar'
 import Rec from './Component/Rec/Rec'
 import Search from './Component/Search/Search'

@@ -12,7 +12,7 @@ export default function Plan() {
   const createLink = () =>{navigate('/search',{state: [{value},{rating}]})}
   const createRec = () =>{navigate('/rec',{state: {rating}})}
   const createPlan = () =>{navigate('/plan',{state: {rating}})}
-  const createUpload = () =>{navigate('/Upload',{state: {rating}})}
+  const createUpload = () =>{navigate('/upload',{state: {rating}})}
   const rating = state.rating
   const navRef = useRef();
 
@@ -72,7 +72,7 @@ export default function Plan() {
   
 
 
-  console.log(result[0], result[1], result[2], result[3]);
+  // console.log(result[0], result[1], result[2], result[3]);
 
   const text = meal.map((d,index) => {return <MealBox key={index}>
                                                 <img style={{ margin: "5px",height: "50px", width: "50px" }} key={index} src = {d.img} alt={d.meal}/> 
@@ -102,8 +102,8 @@ export default function Plan() {
               const searchTerm = value.toLowerCase();
               const fullName = item.name.toLowerCase();
                 return (searchTerm &&fullName.startsWith(searchTerm) &&fullName !== searchTerm);}).slice(0, 10)
-                .map((item) => (
-                <div style={{ cursor: 'pointer' }} onClick={() => onSearch(item.name)} key={item.name}>{item.name}</div>))}
+                .map((item,index) => (
+                <div style={{ cursor: 'pointer' }} onClick={() => onSearch(item.name)} key={index}>{item.name}</div>))}
             </div>
           </div>
         </Header>

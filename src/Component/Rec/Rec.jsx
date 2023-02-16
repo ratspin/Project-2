@@ -50,7 +50,7 @@ export default function Rec() {
   result.push({food_img:food_img,food_nutr:food_nutr,food_ingr:food_ingr,food_name:food_name,food_similar:food_similar})
   }
 
-  console.log(rating);
+  // console.log(rating);
   
   return (
     <div>
