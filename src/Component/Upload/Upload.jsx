@@ -8,10 +8,7 @@ export default function Upload() {
   const [images, setImages] = useState([]);
   const [imageURLs, setImageURLs] = useState([]);
   const [base64, setBase64] = useState("");
-
   const [value, setValue] = useState("");
-  // const [foodname, setFood] = useState("");
-  const [food64, setfood64] = useState("")
 
   const {state} = useLocation();
   const navigate = useNavigate();
@@ -32,7 +29,7 @@ export default function Upload() {
  
   const onSearch = (searchTerm) => {
     setValue(searchTerm);
-    console.log("search ", searchTerm);
+    // console.log("search ", searchTerm);
   };
 
   const onLink = (searchTerm) => {
@@ -51,27 +48,21 @@ export default function Upload() {
     // console.log("Images : ", images[0].name);
   }, [images]);
 
-  function onImageChange(e) {
-    setImages([...e.target.files]);
-  }
-
-  imageToBase64(imageURLs) // Image URL
-  .then(response => setBase64("'"+response+"'"))
-  .catch((error) => {console.log(error); }) // Logs an error if there was one
-
-  // console.log(base64);
 
 
-  const FetchApi = () => {
+  useEffect(() => {
+    imageToBase64(imageURLs) // Image URL
+    .then(response => setBase64("'"+response+"'"))
+    .catch((error) => {console.log(error); }) // Logs an error if there was one
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Apikey", "zEcGHT26R8S7j7vEkgB4pGe1xgHGuQkt");
-    
+
     var raw = JSON.stringify({
       "file": base64
-    });
-                                                
+    });   
+
     var requestOptions = {
       method: 'POST',
       headers: myHeaders,
@@ -81,23 +72,25 @@ export default function Upload() {
     
     fetch("https://api.aiforthai.in.th/thaifood", requestOptions)
       .then(response => response.text())
-      .then(data => setfood64(JSON.parse(data).objects[0].result))
+      .then(data => setValue(JSON.parse(data).objects[0].result))
       .catch(error => console.log('error', error));
-      console.log(food64)
-  };
-  
-  
+      console.log(value)
+  }, [imageURLs,base64,value]);
+
   return (
     <div>
       <NavContainer>
         <Header>
           <NavBox>
+            {/* <button className="nav-btn" onClick={showNavbar}><FaBars /></button> */}
             <a href="/info"><RecipeImage src="/food4U.png" /></a>
             <nav ref={navRef}>
               <div className="a" onClick={() => createRec()} > แนะนำอาหาร</div>
               <div className="a" onClick={() => createPlan()} >วางแผนการรับประทาน</div>
               <div className="a" onClick={() => createSearchImg()} >ค้นหาด้วยรูป</div>
             </nav>
+            {/* <button className="nav-btn nav-close-btn" onClick={showNavbar}><FaTimes /></button> */}
+
           </NavBox>
           <div>
             <SearchBox>
@@ -118,18 +111,17 @@ export default function Upload() {
 
       <Container>
         <div style={{ height: '500px'}}> 
-          <input type="file" accept="image/jpeg, image/png, image/jpg" onChange={onImageChange} /> <br/><br/><br/>
+          <input type="file" accept="image/jpeg, image/png, image/jpg" onChange={(e) => setImages([...e.target.files])} /> <br/><br/><br/>
           รองรับไฟล์รูปภาพนามสกุล .jpg, .png <br/>โดย crop เฉพาะส่วนอาหาร ขนาดไม่เกิน 1 MB <br/><br/>
-          {imageURLs.map((imageSrc, idx) => (
-          <img key={idx} width="100%" height="360" src={imageSrc} alt = "555" />
-          ))}
-          
+          {imageURLs.map((imageSrc, idx) => (<img key={idx} width="100%" height="360" src={imageSrc} alt = "555" />))}          
         </div>
-        <div className="form-submit-button" onClick={() => FetchApi()} >วิเคราะห์ภาพ</div><br/> <br/>
+
+        <div className="form-submit-button" onClick={() => createLink()} >วิเคราะห์ภาพ</div><br/> <br/>
+
+        <>{value}</> 
 
       </Container>
-
-     <>{food64}</> 
+  
   </div>
   )
 }

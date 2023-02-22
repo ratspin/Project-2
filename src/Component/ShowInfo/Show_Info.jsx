@@ -373,7 +373,7 @@ export default function Show_Info() {
 
                  {/* <input type="submit" className="form-submit-button"   value="บันทึกข้อมูล" /><br/> <br/> */}
                {/* <input type="submit" className="form-submit-button"   value="บันทึกข้อมูล" onDoubleClick={() =>{createPost()}}/><br/> <br/> */}
-                <div className="form-submit-button" onClick={() =>{Alert()}}>บันทึกข้อมูล</div><br/> <br/>
+                <div className="form-submit-button" onClick={() =>Alert()}>บันทึกข้อมูล</div><br/> <br/>
             </form>
             <RecipeListContainer> {results !== [] &&results.map((data) => {return <ShowResult data={data} />;})} </RecipeListContainer> 
         </div>
