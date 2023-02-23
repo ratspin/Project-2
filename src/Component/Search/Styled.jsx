@@ -7,6 +7,14 @@ export const Container = styled.div`
     text-align: center;
 `;
 
+export const ContainerERR = styled.div`
+    margin: 5%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
 export const RecipeListContainer = styled.div`
     display: flex;
     flex-direction: column;

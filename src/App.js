@@ -9,7 +9,8 @@ import Home from './Component/Home/Home'
 import Profile from './Component/Profile/Profile'
 import Plan from './Component/Plan/Plan'
 import Upload from './Component/Upload/Upload'
-import SearchImg from './Component/SearchImg/SearchImg'
+import SearchError from './Component/Search/SearchError'
+import SearchImg from './Component/Search/SearchImg'
 
 export default function App() {
 
@@ -18,15 +19,16 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/Info' element={<Info />} />
+          <Route path='/info' element={<Info />} />
           <Route path='/test' element={<Test />} />
-          <Route path='/NavBar' element={<NavBar />} />
-          <Route path='/Rec' element={<Rec />} />
-          <Route path='/Search' element={<Search />} />
-          <Route path='/Profile' element={<Profile />} />
-          <Route path='/Plan' element={<Plan />} />
-          <Route path='/Upload' element={<Upload/>} />
-          <Route path='/SearchImg' element={<SearchImg />} />
+          <Route path='/navbar' element={<NavBar />} />
+          <Route path='/rec' element={<Rec />} />
+          <Route path='/search' element={<Search />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/plan' element={<Plan />} />
+          <Route path='/upload' element={<Upload/>} />
+          <Route path='/searchError' element={<SearchError />} />
+          <Route path='/searchimg' element={<SearchImg />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,44 +1,38 @@
-import React,{useEffect,useState} from "react";
+import React, { useState } from "react"
+import { useDropzone } from "react-dropzone"
+import "./styles.css"
 
+export default function Test2() {
+  const [files, setFiles] = useState([])
 
-export default function Test() {
-
-
-  const [food64, setfood64] = useState([])
-
-  const text = "กุ้ชุปแป้งทอด";
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-  myHeaders.append("Apikey", "zEcGHT26R8S7j7vEkgB4pGe1xgHGuQkt");
-  var requestOptions = {
-    method: 'POST',
-    headers: myHeaders,
-    redirect: 'follow'
-  };
-  useEffect(() => {
-    fetch(`https://api.aiforthai.in.th/wordapprox?word=${text}&model=food`, requestOptions)
-      .then(response => response.text())
-      .then(data => setfood64(data))
-      // .then(result => console.log(result))
-      // .catch(error => console.log('error', error))
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: "image/*",
+    onDrop: (acceptedFiles) => {
+      setFiles(
+        acceptedFiles.map((file) =>
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          })
+        )
+      )
+    },
   })
-  console.log(food64)
 
-
-
-
+  const images = files.map((file) => (
+    <div key={file.name}>
+      <div>
+        <img src={file.preview} style={{ width: "200px" }} alt="preview" />
+      </div>
+    </div>
+  ))
 
   return (
-    
-    <div>
-55555555
-
-  </div>
+    <div className="App">
+      <div {...getRootProps()}>
+        <input {...getInputProps()} />
+        <p>Drop files here</p>
+      </div>
+      <div>{images}</div>
+    </div>
   )
 }
-
-
-
-
-
-

@@ -9,13 +9,16 @@ export default function Upload() {
   const [imageURLs, setImageURLs] = useState([]);
   const [base64, setBase64] = useState("");
   const [value, setValue] = useState("");
+  const [foodname, setFoodname] = useState("ไม่พบผลลัพธ์ที่ตรงกับการค้นหาของคุณ");
 
   const {state} = useLocation();
   const navigate = useNavigate();
-  const createLink = () =>{navigate('/search',{state: [{value},{rating}]})}
+  const createErr = () =>{navigate('/searcherror',{state: [{foodname},{rating}]})}
+  const createSearchImg = () =>{navigate('/searchimg',{state: [{foodname},{rating}]})}
+  const createSearch = () =>{navigate('/search',{state: [{value},{rating}]})}
   const createRec = () =>{navigate('/rec',{state: {rating}})}
   const createPlan = () =>{navigate('/plan',{state: {rating}})}
-  const createSearchImg = () =>{navigate('/upload',{state: {rating}})}
+  const createUpload = () =>{navigate('/upload',{state: {rating}})}
   
   const rating = state.rating
   const navRef = useRef();
@@ -34,11 +37,9 @@ export default function Upload() {
 
   const onLink = (searchTerm) => {
     setValue(searchTerm);
-    createLink()
+    createSearch()
     console.log("search onLink :", searchTerm);
   };
-
-
 
   useEffect(() => {
     if (images.length < 1) return;
@@ -47,8 +48,6 @@ export default function Upload() {
     setImageURLs(newImageUrls);
     // console.log("Images : ", images[0].name);
   }, [images]);
-
-
 
   useEffect(() => {
     imageToBase64(imageURLs) // Image URL
@@ -72,11 +71,26 @@ export default function Upload() {
     
     fetch("https://api.aiforthai.in.th/thaifood", requestOptions)
       .then(response => response.text())
-      .then(data => setValue(JSON.parse(data).objects[0].result))
+      .then(data => setFoodname(JSON.parse(data).objects[0].result))
       .catch(error => console.log('error', error));
-      console.log(value)
-  }, [imageURLs,base64,value]);
+      console.log(foodname)
+  }, [imageURLs,base64,foodname]);
 
+
+  
+  const createLink = () => {
+    // for (var index = 0; index < data.length; index++) {
+    //     if(foodname === name[index].name) {
+    //       createSearchImg()
+    //     }
+    //     // else createErr()
+    // }
+    createSearchImg()
+    createErr()
+  };
+
+  console.log(value)
+  
   return (
     <div>
       <NavContainer>
@@ -87,7 +101,7 @@ export default function Upload() {
             <nav ref={navRef}>
               <div className="a" onClick={() => createRec()} > แนะนำอาหาร</div>
               <div className="a" onClick={() => createPlan()} >วางแผนการรับประทาน</div>
-              <div className="a" onClick={() => createSearchImg()} >ค้นหาด้วยรูป</div>
+              <div className="a" onClick={() => createUpload()} >ค้นหาด้วยรูป</div>
             </nav>
             {/* <button className="nav-btn nav-close-btn" onClick={showNavbar}><FaTimes /></button> */}
 
@@ -118,7 +132,7 @@ export default function Upload() {
 
         <div className="form-submit-button" onClick={() => createLink()} >วิเคราะห์ภาพ</div><br/> <br/>
 
-        <>{value}</> 
+        <>{foodname}</> 
 
       </Container>
   
