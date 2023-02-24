@@ -8,6 +8,7 @@ export const Container = styled.div`
     justify-content: center;
     text-align: center;
     padding: 30px;
+    margin-top: 70px;
 `;
 
 export const RecipeListContainer = styled.div`
@@ -109,6 +110,9 @@ export const SeeNutrients = styled(SeeMoreText)`
 export const NavContainer = styled.div`
   display: flex;
   flex-direction: column;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
 `;
 export const Header = styled.div`
   background-color: #FFA500;
@@ -121,15 +125,15 @@ export const Header = styled.div`
   font-size: 15px;
   font-weight: bold;
   box-shadow: 0 3px 6px 0 #555;
-  height: 60px
+  height: 60px;
 `;
 export const SearchBox = styled.div`
   display: flex;
   flex-direction: row;
   // padding-top: 30px;
   border-radius: 6px;
-  margin-right: 50px;
-  margin-top: 13px;
+  margin-right: 10px;
+  margin-top: 5px;
   width: 90%;
   background-color: white;
   // box-shadow: 0 3px 6px 0 #555;
@@ -161,6 +165,14 @@ export const NavBox = styled.div`
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
+`;
+
+export const IconBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 10px;
 `;
 
 export const Day = styled.div`

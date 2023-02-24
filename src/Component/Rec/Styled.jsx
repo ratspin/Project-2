@@ -5,6 +5,7 @@ export const Container = styled.div`
     /* display: flex;
     flex-direction: column;
     text-align: center; */
+    margin-top: 70px;
 `;
 
 export const RecipeListContainer = styled.div`
@@ -82,11 +83,14 @@ export const SeeNutrients = styled(SeeMoreText)`
   border: solid 1px #5677fc;
 `;
 
-
 export const NavContainer = styled.div`
   display: flex;
   flex-direction: column;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
 `;
+
 export const Header = styled.div`
   background-color: #FFA500;
   // color: white;

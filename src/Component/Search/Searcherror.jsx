@@ -15,10 +15,10 @@ export default function SearchError() {
   const createRec = () =>{navigate('/rec',{state: {rating}})}
   const createPlan = () =>{navigate('/plan',{state: {rating}})}
   const createUpload = () =>{navigate('/Upload',{state: {rating}})}
-  const rating = state[1].rating
-  const search_name = state[0].value;
+  const rating = state[0].rating
+
   const navRef = useRef();
-  console.log(search_name);
+
   // console.log(rating);
   
   var name = [];
@@ -39,19 +39,7 @@ export default function SearchError() {
   };
 
 
-  const food_name = search_name;
-  const food_img = "food/" + search_name + ".png";
-  const food_ingr = "ingredients/" + search_name + ".png";
-  const food_nutr = "nutrients/" + search_name + ".png";
-  const showinfo = [];
 
-  showinfo.push({
-    food_img: food_img,
-    food_nutr: food_nutr,
-    food_ingr: food_ingr,
-    food_name: food_name,
-  });
-  // console.log(food_img);
 
   return (
     <div>
