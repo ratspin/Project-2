@@ -1,6 +1,6 @@
 import React from "react";
-import {RecipeListContainer,RecipeContainer,CoverImage,RecipeName,SeeIngredients,SeeNutrients,
-  // SeeMoreText,DialogImage
+import {RecipeListContainer,RecipeContainer,CoverImage,RecipeName,SeeNutrients,
+  // SeeIngredients,SeeMoreText,DialogImage
 } from './Styled'
 import Modal1 from "../Modal/Modal_Ingredients";
 import Modal2 from "../Modal/Modal_Nutrients";
@@ -26,9 +26,9 @@ export default function ShowResult({ data }) {
           <SeeNutrients onClick={() => setOpenModal1(true)}>
             ข้อมูลวัตถุดิบ
           </SeeNutrients>
-          <SeeIngredients onClick={() => setOpenModal2(true)}>
+          {/* <SeeIngredients onClick={() => setOpenModal2(true)}>
             ข้อมูลโภชนาการ
-          </SeeIngredients>
+          </SeeIngredients> */}
           {/* <SeeRecFood> แนะนำอาหารทางเลือก </SeeRecFood> */}
         </RecipeContainer>
   </RecipeListContainer>

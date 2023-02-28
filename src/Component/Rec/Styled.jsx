@@ -2,10 +2,10 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     /* padding-bottom: 50px; */
-    /* display: flex;
+    display: flex;
     flex-direction: column;
-    text-align: center; */
-    margin-top: 70px;
+    text-align: center;
+    margin-top: 100px
 `;
 
 export const RecipeListContainer = styled.div`
@@ -36,7 +36,7 @@ export  const DialogImage = styled.img`
 `;
 
 export const RecipeName = styled.span`
-  font-size: 18px;
+  font-size: 25px;
   font-weight: 600;
   color: black;
   margin: 10px 0;
@@ -44,7 +44,9 @@ export const RecipeName = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
+  vertical-align : super;
   `;
+  
 export const SeeMoreText = styled.span`
   color: #eb3300;
   font-size: 18px;
@@ -116,6 +118,7 @@ export const SearchBox = styled.div`
   // box-shadow: 0 3px 6px 0 #555;
   border: solid 1px #f8ae1a; 
 `;
+
 export const SearchIcon = styled.img`
   width: 32px;
   height: 32px;
@@ -143,3 +146,9 @@ export const NavBox = styled.div`
   flex-direction: row;
   align-items: center;
 `;
+
+export const IconImg = styled.img`
+    width: 50px;
+    height: 50px;
+    vertical-align : sub;
+`

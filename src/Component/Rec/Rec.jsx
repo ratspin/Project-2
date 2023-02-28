@@ -1,5 +1,5 @@
 import React, { useRef,useState } from "react";
-import {Container,RecipeListContainer,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage} from './Styled'
+import {Container,RecipeListContainer,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage,RecipeName,IconImg} from './Styled'
 import { useLocation, useNavigate} from 'react-router-dom';
 import "./NavBar.css";
 // import { FaBars, FaTimes } from "react-icons/fa";
@@ -18,7 +18,6 @@ export default function Rec() {
   const navRef = useRef();
 
   var data = require("../../calculatetion/food.json");
-  var fooddb = require('../../calculatetion/food.json'); 
   var calculate = require("../../calculatetion/calculate.js");
 
   var name = [];
@@ -38,7 +37,7 @@ export default function Rec() {
     console.log("search onLink :", searchTerm);
   };
 
-  var cal_result = calculate.similar_sort(calculate.Weight(rating),calculate.Weight(fooddb) ,calculate.similar_score ,20)
+  var cal_result = calculate.similar_sort(calculate.Weight(rating),calculate.Weight(data) ,calculate.similar_score ,20)
   var result= []
 
   for(var i = 0; i < cal_result.length; i++) {
@@ -58,7 +57,7 @@ export default function Rec() {
         <Header>
           <NavBox>
             {/* <button className="nav-btn" onClick={showNavbar}><FaBars /></button> */}
-            <a href="/info"><RecipeImage src="/food4U.png" /></a>
+            <a href="/info"><RecipeImage src="/3.png" /></a>
             <nav ref={navRef}>
               <div className="a" onClick={() => createRec()} > แนะนำอาหาร</div>
               <div className="a" onClick={() => createPlan()} >วางแผนการรับประทาน</div>
@@ -70,7 +69,7 @@ export default function Rec() {
           <div>
             <SearchBox>
               <SearchIcon src="/search-icon.svg" onClick={() => onLink(value)}/>
-              <SearchInput placeholder="Search" type="text"value={value} onChange={(e) => setValue(e.target.value)}/>
+              <SearchInput placeholder="ค้นหา" type="text"value={value} onChange={(e) => setValue(e.target.value)}/>
             </SearchBox>
             <div className="dropdown">
             {name.filter((item) => {
@@ -86,6 +85,9 @@ export default function Rec() {
 
 
       <Container>
+        <RecipeName>เมนูสำหรับผู้ที่มี</RecipeName>
+        <div><RecipeName>โรคหัวใจ </RecipeName> <IconImg src="/icon/โรคหัวใจ.png" alt = "หมู"/> </div>
+        
         <RecipeListContainer>
           {result !== [] &&result.map((data,index) => {return <ShowResult key={index} data={data} />;})}
       </RecipeListContainer>
