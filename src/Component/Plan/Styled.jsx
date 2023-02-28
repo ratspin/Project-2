@@ -121,8 +121,9 @@ export const Header = styled.div`
   font-size: 15px;
   font-weight: bold;
   box-shadow: 0 3px 6px 0 #555;
-  height: 60px
+  height: 60px;
 `;
+
 export const SearchBox = styled.div`
   display: flex;
   flex-direction: row;

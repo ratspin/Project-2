@@ -85,7 +85,7 @@ export default function Plan() {
       <NavContainer>
         <Header>
           <NavBox>
-            <a href="/info"><RecipeImage src="/food4U.png" /></a>
+            <a href="/info"><RecipeImage src="/3.png" /></a>
             <nav ref={navRef}>
               <div className="a" onClick={() => createRec()} > แนะนำอาหาร</div>
               <div className="a" onClick={() => createPlan()} >วางแผนการรับประทาน</div>
@@ -95,7 +95,7 @@ export default function Plan() {
           <div>
             <SearchBox>
               <SearchIcon src="/search-icon.svg" onClick={() => onLink(value)}/>
-              <SearchInput placeholder="Search" type="text"value={value} onChange={(e) => setValue(e.target.value)}/>
+              <SearchInput placeholder="ค้นหา" type="text"value={value} onChange={(e) => setValue(e.target.value)}/>
             </SearchBox>
             <div className="dropdown">
             {name.filter((item) => {
@@ -113,7 +113,9 @@ export default function Plan() {
         <DayBox>  
           <Day >วันที่ 1</Day>    
             <RecipeListContainer>{text}</RecipeListContainer>
-          <Day style={{ backgroundColor: 'white'}} >วันที่ 1</Day>    
+            <div  style={{color: '#14BE1A'}}>เปลี่ยนแผนการรับประทาน <br/>  
+              <img style={{ height: "40px", width: "40px" }} src ="/refresh.png"  alt = "555"  />
+            </div><br/> <br/>  
         </DayBox>                   
         <RecipeListContainer>   
           {day1 !== [] &&day1.map((data,index) => {return <ShowResult key={index} data={data} />;})}

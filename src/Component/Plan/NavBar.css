@@ -7,6 +7,24 @@
 	--secondaryColor: #db2b39;
 	--textColor: rgb(0, 0, 0);
 }
+.form-submit-button {
+	--color: #08fb10;
+	padding: 0.8em 1.7em;
+	/* border-radius: .3em; */
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+	transition: .5s;
+	font-weight: 400;
+	font-size: 17px;
+	/* border: 1px solid; */
+	font-family: inherit;
+	text-transform: uppercase;
+	color: var(--color);
+	z-index: 1;
+	}
+
+
 
 .a {
 	margin: 10px;
