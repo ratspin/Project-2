@@ -28,6 +28,7 @@
     "react-scripts": "5.0.1",
     "react-star-rating-component": "^1.4.1",
     "reactjs-popup": "^2.0.5",
+    "string-similarity": "^4.0.4",
     "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },
