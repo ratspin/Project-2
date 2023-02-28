@@ -31,7 +31,15 @@ export const IconImg = styled.img`
     width: 50px;
     height: 50px;
     padding-top: 10px;
+    margin-right: 1rem;
+    margin-left: 1rem;
 `
 export const IconBox = styled.div`
     padding-top: 30px;
+    margin-right: 1rem;
 `
+export const Checkbox = styled.div`
+    margin-left: 1rem;	
+`
+
+
