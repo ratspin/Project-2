@@ -3,9 +3,9 @@ import {Container,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,Re
 import { useLocation, useNavigate} from 'react-router-dom';
 import imageToBase64 from 'image-to-base64/browser';
 import "./NavBar.css";
-import Popup from 'reactjs-popup';
+// import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import Avatar from 'react-avatar';
+// import Avatar from 'react-avatar';
 
 export default function Upload() {
   const [images, setImages] = useState([]);
@@ -41,7 +41,7 @@ export default function Upload() {
 
   const onLink = (searchTerm) => {
     setValue(searchTerm);
-    createSearch()
+    createErr()
     console.log("search onLink :", searchTerm);
   };
 
@@ -135,7 +135,7 @@ export default function Upload() {
             <div>
               <SearchBox>
                 <SearchIcon src="/search-icon.svg" onClick={() => onLink(value)}/>
-                <SearchInput placeholder="Search" type="text"value={value} onChange={(e) => setValue(e.target.value)}/>
+                <SearchInput placeholder="ค้นหา" type="text"value={value} onChange={(e) => setValue(e.target.value)}/>
               </SearchBox>
               <div className="dropdown">
               {name.filter((item) => {
@@ -146,11 +146,11 @@ export default function Upload() {
                   <div style={{ cursor: 'pointer' }} onClick={() => onSearch(item.name)} key={item.name}>{item.name}</div>))}
               </div>
             </div>
-            <Popup trigger=
+            {/* <Popup trigger=
                 {<button> <Avatar round={true} size="40" src ="/p.png"/> </button>}
                 position="bottom">
                 <div> 55555 </div>
-            </Popup>
+            </Popup> */}
           </IconBox>
        
         </Header>

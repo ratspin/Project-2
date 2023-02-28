@@ -48,7 +48,7 @@ export default function SearchError() {
       <Header>
         <NavBox>
           {/* <button className="nav-btn" onClick={showNavbar}><FaBars /></button> */}
-          <a href="/info"><RecipeImage src="/food4U.png" /></a>
+          <a href="/info"><RecipeImage src="/3.png" /></a>
           <nav ref={navRef}>
             <div className="a" onClick={() => createRec()} > แนะนำอาหาร</div>
             <div className="a" onClick={() => createPlan()} >วางแผนการรับประทาน</div>
@@ -60,7 +60,7 @@ export default function SearchError() {
         <div>
           <SearchBox>
             <SearchIcon src="/search-icon.svg" onClick={() => onLink(value)}/>
-            <SearchInput placeholder="Search" type="text"value={value} onChange={(e) => setValue(e.target.value)}/>
+            <SearchInput placeholder="ค้นหา" type="text"value={value} onChange={(e) => setValue(e.target.value)}/>
           </SearchBox>
           <div className="dropdown">
           {name.filter((item) => {
