@@ -114,6 +114,7 @@ export const NavContainer = styled.div`
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
 `;
+
 export const Header = styled.div`
   background-color: #FFA500;
   // color: white;
@@ -132,18 +133,20 @@ export const SearchBox = styled.div`
   flex-direction: row;
   // padding-top: 30px;
   border-radius: 6px;
-  margin-right: 10px;
-  margin-top: 5px;
+  margin-right: 50px;
+  margin-top: 13px;
   width: 90%;
   background-color: white;
   // box-shadow: 0 3px 6px 0 #555;
   border: solid 1px #f8ae1a; 
 `;
+
 export const SearchIcon = styled.img`
   width: 32px;
   height: 32px;
   cursor: pointer;
 `;
+
 export const RecipeImage = styled.img`
   width: 50px;
   height: 50px;
@@ -165,14 +168,6 @@ export const NavBox = styled.div`
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-`;
-
-export const IconBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  align-items: center;
-  margin-right: 10px;
 `;
 
 export const Day = styled.div`

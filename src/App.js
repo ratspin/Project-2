@@ -9,8 +9,6 @@ import Home from './Component/Home/Home'
 import Profile from './Component/Profile/Profile'
 import Plan from './Component/Plan/Plan'
 import Upload from './Component/Upload/Upload'
-import SearchError from './Component/Search/SearchError'
-import SearchImg from './Component/Search/SearchImg'
 
 export default function App() {
 
@@ -27,8 +25,6 @@ export default function App() {
           <Route path='/profile' element={<Profile />} />
           <Route path='/plan' element={<Plan />} />
           <Route path='/upload' element={<Upload/>} />
-          <Route path='/searchError' element={<SearchError />} />
-          <Route path='/searchimg' element={<SearchImg />} />
         </Routes>
       </BrowserRouter>
     </div>

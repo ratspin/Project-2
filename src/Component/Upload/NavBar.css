@@ -77,11 +77,11 @@ nav {
 }
 
 .dropdown {
-    background-color: rgb(255, 255, 255);
+    background-color: white;
     display: flex;
     flex-direction: column;
     border: 1px solid gray;
-	/* width: 100%; */
+	width: 90%;
   }
   
   .dropdown:empty {
@@ -93,9 +93,8 @@ nav {
     text-align: start;
     margin: 2px 0;
   }
-
-
-  .form-submit-button {
+  
+.form-submit-button {
     --color: #f8ae1a;
     padding: 0.8em 1.7em;
     border-radius: .3em;
@@ -110,14 +109,4 @@ nav {
     text-transform: uppercase;
     color: var(--color);
     z-index: 1;
-	text-align: center;
     }
-
-button {
-	background-color: transparent;
-	background-repeat: no-repeat;
-	border: none;
-	cursor: pointer;
-	overflow: hidden;
-	outline: none;
-}

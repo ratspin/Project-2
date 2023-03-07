@@ -1,11 +1,9 @@
 import React, { useRef,useState, useEffect } from "react";
-import {Container,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage,IconBox} from './Styled'
+import {Container,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage} from './Styled'
 import { useLocation, useNavigate} from 'react-router-dom';
 import imageToBase64 from 'image-to-base64/browser';
 import "./NavBar.css";
-// import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-// import Avatar from 'react-avatar';
 
 export default function Upload() {
   const [images, setImages] = useState([]);
@@ -13,12 +11,9 @@ export default function Upload() {
   const [size, setSize] = useState([]);
   const [base64, setBase64] = useState("");
   const [value, setValue] = useState("");
-  const [foodname, setFoodname] = useState("");
 
   const {state} = useLocation();
   const navigate = useNavigate();
-  const createErr = () =>{navigate('/searcherror',{state: [{rating}]})}
-  const createSearchImg = () =>{navigate('/searchimg',{state: [{foodname},{rating}]})}
   const createSearch = () =>{navigate('/search',{state: [{value},{rating}]})}
   const createRec = () =>{navigate('/rec',{state: {rating}})}
   const createPlan = () =>{navigate('/plan',{state: {rating}})}
@@ -41,7 +36,7 @@ export default function Upload() {
 
   const onLink = (searchTerm) => {
     setValue(searchTerm);
-    createErr()
+    createSearch()
     console.log("search onLink :", searchTerm);
   };
 
@@ -76,10 +71,10 @@ export default function Upload() {
     
     fetch("https://api.aiforthai.in.th/thaifood", requestOptions)
       .then(response => response.text())
-      .then(data => setFoodname(JSON.parse(data).objects[0].result))
+      .then(data => setValue(JSON.parse(data).objects[0].result))
       .catch(error => console.log('error', error));
-      console.log(foodname)
-  }, [imageURLs,base64,foodname]);
+      console.log(value)
+  }, [imageURLs,base64,value]);
 
 
   
@@ -87,31 +82,12 @@ export default function Upload() {
     if(size > 1000000){
       alert("โปรดเลือกไฟล์ใหม่ ระบบรองรับไฟล์ขนาดไม่เกิน 1 MB")
     }
-    else if(foodname === ""){
-      alert("โปรดเลือกไฟล์")
+    else if(value === ""){
+      alert("โปรดเลือกไฟล์ใหม่ ระบบรองรับไฟล์ขนาดไม่เกิน 1 MB")
     }
     else{
-      for (var index = 0; index < name.length; index++) {
-        if(String(foodname) === String(name[index].name)) {
-          console.log(foodname)
-          createSearchImg()
-          break;
-        }
-        if(String(foodname) !== String(name[index].name)) {
-          console.log(foodname)
-          createErr()
-          break; 
-        }
-      }
+      createSearch()
     }
-    // if(String(foodname) !== String(name[10].name)) {
-    //   console.log(String(name[10].name),1)
-    // }
-    
-    // if(String(foodname) === String(name[10].name)) {
-    //   console.log(foodname,2)
-    // }
-    
   };
 
   
@@ -120,39 +96,27 @@ export default function Upload() {
       <NavContainer>
         <Header>
           <NavBox>
-            {/* <button className="nav-btn" onClick={showNavbar}><FaBars /></button> */}
-            <a href="/info"><RecipeImage src="/food4U.png" /></a>
+            <a href="/info"><RecipeImage src="/3.png" /></a>
             <nav ref={navRef}>
               <div className="a" onClick={() => createRec()} > แนะนำอาหาร</div>
               <div className="a" onClick={() => createPlan()} >วางแผนการรับประทาน</div>
               <div className="a" onClick={() => createUpload()} >ค้นหาด้วยรูป</div>
             </nav>
-            {/* <button className="nav-btn nav-close-btn" onClick={showNavbar}><FaTimes /></button> */}
-
           </NavBox>
-
-          <IconBox>
-            <div>
-              <SearchBox>
-                <SearchIcon src="/search-icon.svg" onClick={() => onLink(value)}/>
-                <SearchInput placeholder="ค้นหา" type="text"value={value} onChange={(e) => setValue(e.target.value)}/>
-              </SearchBox>
-              <div className="dropdown">
-              {name.filter((item) => {
-                const searchTerm = value.toLowerCase();
-                const fullName = item.name.toLowerCase();
-                  return (searchTerm &&fullName.startsWith(searchTerm) &&fullName !== searchTerm);}).slice(0, 10)
-                  .map((item) => (
-                  <div style={{ cursor: 'pointer' }} onClick={() => onSearch(item.name)} key={item.name}>{item.name}</div>))}
-              </div>
+          <div>
+            <SearchBox>
+              <SearchIcon src="/search-icon.svg" onClick={() => onLink(value)}/>
+              <SearchInput placeholder="ค้นหา" type="text"value={value} onChange={(e) => setValue(e.target.value)}/>
+            </SearchBox>
+            <div className="dropdown" style={{ width: '280px'}} >
+            {name.filter((item) => {
+              const searchTerm = value.toLowerCase();
+              const fullName = item.name.toLowerCase();
+                return (searchTerm &&fullName.startsWith(searchTerm) &&fullName !== searchTerm);}).slice(0, 10)
+                .map((item) => (
+                <div style={{ cursor: 'pointer' }} onClick={() => onSearch(item.name)} key={item.name}>{item.name}</div>))}
             </div>
-            {/* <Popup trigger=
-                {<button> <Avatar round={true} size="40" src ="/p.png"/> </button>}
-                position="bottom">
-                <div> 55555 </div>
-            </Popup> */}
-          </IconBox>
-       
+          </div>
         </Header>
       </NavContainer>
 
@@ -164,9 +128,6 @@ export default function Upload() {
         </div>
 
         <div className="form-submit-button" onClick={() => createLink()} >ค้นหา</div><br/> <br/>
-
-        <>{foodname}</> 
-
       </Container>
   
   </div>
