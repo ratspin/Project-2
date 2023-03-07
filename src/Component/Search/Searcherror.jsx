@@ -3,7 +3,7 @@ import { useLocation,useNavigate } from "react-router-dom";
 import { RecipeName,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage,ContainerERR
   // ,Container,RecipeListContainer,RecipeContainer,CoverImage
   } from "./Styled";
-import "./Search.css";
+import "./NavBar.css";
 var data = require("../../calculatetion/food.json");
 
 export default function SearchError() {

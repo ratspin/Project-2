@@ -1,11 +1,11 @@
 import React, { useRef,useState } from "react";
 import { useLocation,useNavigate } from "react-router-dom";
 import {Container,RecipeListContainer,RecipeContainer,CoverImage,RecipeName,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage,
-  // SeeIngredients,SeeNutrients,ResultBox,
-  Day} from "./Styled";
+  // SeeIngredients,SeeNutrients,ResultBox,Day
+  } from "./Styled";
 // import Modal1 from "../Modal/Modal_Ingredients";
 // import Modal2 from "../Modal/Modal_Nutrients";
-import "./Search.css";
+import "./NavBar.css";
 // import { FaBars, FaTimes } from "react-icons/fa";
 var data = require("../../calculatetion/food.json");
 
@@ -93,7 +93,8 @@ export default function SearchImg() {
 
     <Container>
 
-        <Day >ผลลัพธ์การค้นหา</Day>      <RecipeName>{food_name}</RecipeName>
+        {/* <Day >ผลลัพธ์การค้นหา</Day>      */}
+         <RecipeName>{food_name}</RecipeName>
 
           <RecipeListContainer>
             <RecipeContainer>
