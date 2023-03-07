@@ -5,7 +5,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin-top: 100px
+    margin-top: 100px;
 `;
 
 export const RecipeListContainer = styled.div`
@@ -104,7 +104,7 @@ export const Header = styled.div`
   font-size: 15px;
   font-weight: bold;
   box-shadow: 0 3px 6px 0 #555;
-  height: 60px
+  height: 60px;
 `;
 export const SearchBox = styled.div`
   display: flex;

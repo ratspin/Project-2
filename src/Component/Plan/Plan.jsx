@@ -97,7 +97,7 @@ export default function Plan() {
               <SearchIcon src="/search-icon.svg" onClick={() => onLink(value)}/>
               <SearchInput placeholder="ค้นหา" type="text"value={value} onChange={(e) => setValue(e.target.value)}/>
             </SearchBox>
-            <div className="dropdown">
+            <div className="dropdown" style={{ width: '280px'}}>
             {name.filter((item) => {
               const searchTerm = value.toLowerCase();
               const fullName = item.name.toLowerCase();
