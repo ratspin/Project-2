@@ -27,7 +27,7 @@ var similar_sort  = function(user,food,similar_score,num_food){
     for(var i = 0 ; i < food.length ; i ++ ){
             var score = similar_score(user[0],food[i])
             var food_name = food[i]["อาหาร"]
-            similar_all.push({similar_rate : score , food : food_name });
+             similar_all.push({similar_rate : score , food : food_name });
         }
     //เรียงลำดับค่าความคล้ายคลึงแต่ละเมนูอาหาร โดยเรียงจากมากไปน้อย
     similar_all.sort(function(a,b){ 

@@ -2,14 +2,10 @@ import React,{ useState } from "react";
 import Rating from '@mui/material/Rating';
 import './Show_Info.css';
 import { useNavigate } from 'react-router-dom';
-import {RecipeListContainer,IconImg,IconBox,Checkbox} from './Styled'
-import ShowResult from "../ShowResult/Show_Result";
-var food = require('../../calculatetion/food.json'); 
-var calculate = require("../../calculatetion/calculate.js");
+import {IconImg,IconBox,Checkbox} from './Styled'
 
 export default function Show_Info() {
     const navigate = useNavigate();
-    const [results, setresults] = useState([]);
     const createPost = () =>{navigate('/rec',{state: {rating}})}
     const [userinfo, setUserInfo] = useState({value: [0]});
     const [userinfo1, setUserInfo1] = useState ({value1: [0]});
@@ -42,9 +38,6 @@ export default function Show_Info() {
     const [rating24, setratings24] = useState(0);
     const [rating25, setratings25] = useState(0);
     const [rating26, setratings26] = useState(0);
-
-  
-
     var handleChange  = (e) => {
         const { checked} = e.target;
         const { value } = userinfo;
@@ -118,31 +111,6 @@ export default function Show_Info() {
     })
     // console.log(rating);
 
-    const onSubmit = (e) => {
-        e.preventDefault();
-        var result = calculate.similar_sort(calculate.Weight(rating),calculate.Weight(food) ,calculate.similar_score ,20)
-
-        var food_img = []
-        var food_ingr = []
-        var food_db = []
-        var food_name = []
-        var food_similar = []
-        var food_nutr = []
-
-        for(var i = 0; i < result.length; i++) {
-        food_img = "food/"+ result[i].food + ".png"
-        food_ingr = "ingredients/"+ result[i].food + ".png"
-        food_nutr = "nutrients/"+ result[i].food + ".png"
-        food_name = result[i].food
-        food_similar = result[i].similar_rate
-        food_db.push({food_img:food_img,food_nutr:food_nutr,food_ingr:food_ingr,food_name:food_name,food_similar:food_similar})
-        }
-
-        setresults(food_db);
-        console.log(food_db);
-    };
-
-
     const Alert = () => {
         // if(rating0 === 0 || rating1 === 0 || rating2 === 0  || rating3 === 0 || rating4 === 0 || rating5 === 0 || rating6 === 0 || rating7 === 0 || rating8 === 0 || rating9 === 0 || rating10 === 0 || rating11 === 0 || rating12 === 0 || rating13 === 0 || rating14 === 0 || rating15 === 0 || rating16 === 0 || rating17 === 0 || rating18 === 0 || rating19 === 0 || rating20 === 0 || rating21 === 0 || rating22 === 0 || rating23 === 0 || rating24 === 0 || rating25 === 0 || rating26 === 0 )  alert("โปรดระบุข้อมูลให้ครบถ้วน")
         // else createPost()
@@ -153,7 +121,7 @@ export default function Show_Info() {
     return (
         <div>
 
-            <form onSubmit={onSubmit}   ><br/><br/><br/>
+            <form ><br/><br/><br/>
                 <div className="container">
                     <div className="card">
                         <div className="card-header"> <p className="title">ระบุโรคของคุณ</p> </div>
@@ -395,7 +363,6 @@ export default function Show_Info() {
                {/* <input type="submit" className="form-submit-button"   value="บันทึกข้อมูล" onDoubleClick={() =>{createPost()}}/><br/> <br/> */}
                 <div className="form-submit-button" onClick={() =>Alert()}>บันทึกข้อมูล</div><br/> <br/>
             </form>
-            <RecipeListContainer> {results !== [] &&results.map((data) => {return <ShowResult data={data} />;})} </RecipeListContainer> 
         </div>
 );
 }
