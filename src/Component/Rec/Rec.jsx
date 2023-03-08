@@ -1,8 +1,7 @@
 import React, { useRef,useState } from "react";
-import {Container,RecipeListContainer,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage,RecipeName,IconImg} from './Styled'
+import {Container,RecipeListContainer,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage,RecipeName} from './Styled'
 import { useLocation, useNavigate} from 'react-router-dom';
 import "./NavBar.css";
-// import { FaBars, FaTimes } from "react-icons/fa";
 import ShowResult from "../ShowResult/Show_Result"
 
 
@@ -49,7 +48,25 @@ export default function Rec() {
   result.push({food_img:food_img,food_nutr:food_nutr,food_ingr:food_ingr,food_name:food_name,food_similar:food_similar})
   }
 
-  // console.log(result);
+  console.log(rating[0].โรค);
+
+  var disease = ""
+  if(rating[0].โรค === "A") disease = "โรคหัวใจ"
+  if(rating[0].โรค === "B") disease = "โรคเบาหวาน"
+  if(rating[0].โรค === "C") disease = "โรคความดันโลหิตสูง"
+  if(rating[0].โรค === "D") disease = "โรคไต"
+  if(rating[0].โรค === "AB") disease = "โรคหัวใจ และโรคเบาหวาน"
+  if(rating[0].โรค === "AC") disease = "โรคหัวใจ และโรคความดันโลหิตสูง"
+  if(rating[0].โรค === "AD") disease = "โรคหัวใจ และโรคไต"
+  if(rating[0].โรค === "BC") disease = "โรคเบาหวาน และโรคความดันโลหิตสูง"
+  if(rating[0].โรค === "BD") disease = "โรคเบาหวาน และโรคไต"
+  if(rating[0].โรค === "CD") disease = "โรคความดันโลหิตสูง และโรคไต"
+  if(rating[0].โรค === "ABC") disease = "โรคหัวใจ โรคเบาหวาน และโรคความดันโลหิตสูง"
+  if(rating[0].โรค === "ABD") disease = "โรคหัวใจ โรคเบาหวาน และโรคไต"
+  if(rating[0].โรค === "ACD") disease = "โรคหัวใจ โรคความดันโลหิตสูง และโรคไต"
+  if(rating[0].โรค === "BCD") disease = "โรคเบาหวาน โรคความดันโลหิตสูง และโรคไต"
+  if(rating[0].โรค === "ABCD") disease = "โรคหัวใจ โรคเบาหวาน โรคความดันโลหิตสูง และโรคไต"
+
   
   return (
     <div>
@@ -86,7 +103,9 @@ export default function Rec() {
 
       <Container>
         <RecipeName>เมนูสำหรับผู้ที่มี</RecipeName>
-        <div><RecipeName>โรคหัวใจ </RecipeName> <IconImg src="/icon/โรคหัวใจ.png" alt = "หมู"/> </div>
+        <div><RecipeName> {disease} </RecipeName>
+         {/* <IconImg src="/icon/โรคหัวใจ.png" alt = "หมู"/>  */}
+        </div>
         
         <RecipeListContainer>
           {result !== [] &&result.map((data,index) => {return <ShowResult key={index} data={data} />;})}
