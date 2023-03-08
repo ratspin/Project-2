@@ -17,8 +17,8 @@ export const Container = styled.div`
 
 export const DialogImage = styled.img`
   object-fit: cover;
-  max-height: 500px;
   padding: 10px;
+  height : 100%;
 `;
 
 export const SeeMoreText = styled.span`
