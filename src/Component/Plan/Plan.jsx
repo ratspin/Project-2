@@ -67,18 +67,10 @@ export default function Plan() {
           day3.push(random_item(result))
         }
   
-    
-    
-  
-
-
-  // console.log(result[0], result[1], result[2], result[3]);
-
   const text = meal.map((d,index) => {return <MealBox key={index}>
                                                 <img style={{ margin: "5px",height: "50px", width: "50px" }} key={index} src = {d.img} alt={d.meal}/> 
                                                 <div style={{ marginTop: "15px" }} key={index}>{d.meal}</div> 
                                               </MealBox> })
-
  
   return (
     <div>
@@ -113,7 +105,8 @@ export default function Plan() {
         <DayBox>  
           <Day >วันที่ 1</Day>    
             <RecipeListContainer>{text}</RecipeListContainer>
-            <div  style={{color: '#14BE1A'}}>เปลี่ยนแผนการรับประทาน <br/>  
+            <div  style={{color: '#14BE1A' , cursor: "pointer"}} onClick={() => createPlan()} >
+              เปลี่ยนแผนการรับประทาน <br/>  
               <img style={{ height: "40px", width: "40px" }} src ="/refresh.png"  alt = "555"  />
             </div><br/> <br/>  
         </DayBox>                   
