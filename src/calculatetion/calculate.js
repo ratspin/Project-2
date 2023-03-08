@@ -17,10 +17,7 @@ var Similar_score  = function(x,y){
 var Similar_sort  = function(user,food,similar_score,num_food){ 
     var similar_all  = [];
     for(var i = 0 ; i < food.length ; i ++ ){
-            similar_all.push({  similar_rate : similar_score(user[0],food[i]) , 
-                                food : food[i]["อาหาร"] ,
-                                การปรุง : food[i]["การปรุง"] ,
-                                มื้อเช้า : food[i]["มื้อเช้า"] ,
+            similar_all.push({  similar_rate : similar_score(user[0],food[i]) , food : food[i]["อาหาร"] ,การปรุง : food[i]["การปรุง"] , มื้อเช้า : food[i]["มื้อเช้า"] ,
                                 // โรค : food[i]["โรค"]
                             });                       
         }

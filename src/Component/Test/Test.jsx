@@ -1,41 +1,25 @@
-import { useState } from "react";
-var data = require('../../calculatetion/food.json');
+import React from 'react';
+var stringSimilarity = require("string-similarity");
 
-export default function App() {
-  const [value, setValue] = useState("");
+export default function PopupGfg() {
 
-  // const onChange = (event) => {
-  //   setValue(event.target.value);
-  // };
+    var data = require("../../calculatetion/food.json");
+    var name = [];
+    for (var index = 0; index < data.length; index++) {
+      name.push(data[index]["อาหาร"]);
+    }
 
-  const onSearch = (searchTerm) => {
-    setValue(searchTerm);
-    // our api to fetch the search result
-    console.log("search ", searchTerm);
-  };
+ 
+    var foodname = "ข้าวหมก"
 
-  var name = [];
-  for (var i = 0; i < data.length; i++) {
-    var food = data[i]["อาหาร"];
-    name.push({ name: food });
-    console.log(value);
-  }
-  
-  return (
-    <div >
-        <div >
-          <input type="text" value={value} onChange={(e) => setValue(e.target.value)} />
-          <button onClick={() => onSearch(value)}> Search </button>
+    const result = stringSimilarity.findBestMatch(foodname,name)
+    console.log(result); 
+
+
+    return (
+        <div style={{ margin: '30%' }}>
+                    555555
         </div>
+    )
+};
 
-        <div>
-          {name.filter((item) => {
-            const searchTerm = value.toLowerCase();
-            const fullName = item.name.toLowerCase();
-              return (searchTerm &&fullName.startsWith(searchTerm) &&fullName !== searchTerm);}).slice(0, 10)
-              .map((item) => (
-              <div onClick={() => onSearch(item.name)} key={item.name}>{item.name}</div>))}
-        </div>
-    </div>
-  );
-}
