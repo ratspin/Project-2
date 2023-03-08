@@ -2,7 +2,7 @@ import React,{ useState } from "react";
 import Rating from '@mui/material/Rating';
 import './Show_Info.css';
 import { useNavigate } from 'react-router-dom';
-import {IconImg,IconBox,Checkbox} from './Styled'
+import {IconImg,IconBox,Checkbox,Cardbox,Box} from './Styled'
 
 export default function Show_Info() {
     const navigate = useNavigate();
@@ -45,30 +45,38 @@ export default function Show_Info() {
         const { checked} = e.target;
         const { value } = userinfo;
         if(value)
-        if (checked)    { setUserInfo({value: [5],});} //console.log("โรคหัวใจ : checked ") }
+        if (checked)    { setUserInfo({value: ["A"],});} //console.log("โรคหัวใจ : checked ") }
         else            { setUserInfo({value: [0],});} //console.log("โรคหัวใจ : unchecked")}      
     }; 
     const handleChange1 = (e) => {
         const { checked} = e.target;
         const { value1 } = userinfo1;
         if(value1)
-        if (checked)    { setUserInfo1({value1: [5],});} //console.log("โรคเบาหวาน : checked") }
+        if (checked)    { setUserInfo1({value1: ["B"],});} //console.log("โรคเบาหวาน : checked") }
         else            { setUserInfo1({value1: [0],});} //console.log("โรคเบาหวาน : unchecked")}  
     }; 
     const handleChange2 = (e) => {
         const { checked} = e.target;
         const { value2 } = userinfo2;
         if(value2)
-        if (checked)    { setUserInfo2({value2: [5],});} //console.log("โรคไต : checked") }
+        if (checked)    { setUserInfo2({value2: ["D"],});} //console.log("โรคไต : checked") }
         else            { setUserInfo2({value2: [0],});} //console.log("โรคไต : unchecked")}  
     }; 
     const handleChange3 = (e) => {
         const { checked} = e.target;
         const { value3 } = userinfo3;
         if(value3)
-        if (checked)    { setUserInfo3({value3: [5],});} //console.log("โรคความดันโลหิตสูง : checked") }
+        if (checked)    { setUserInfo3({value3: ["C"],});} //console.log("โรคความดันโลหิตสูง : checked") }
         else            { setUserInfo3({value3: [0],});} //console.log("โรคความดันโลหิตสูง : unchecked")}  
     }; 
+
+    var disease = ""
+    if(userinfo.value[0] === "A")  disease = disease + userinfo.value[0]
+    if(userinfo1.value1[0] === "B")  disease = disease + userinfo1.value1[0]
+    if(userinfo3.value3[0] === "C")  disease = disease + userinfo3.value3[0]
+    if(userinfo2.value2[0] === "D")  disease = disease + userinfo2.value2[0]
+
+    // console.log(disease);
 
     var protein =   [   "หมู","ไก่",'ปลา',"กุ้ง","หมึก","เนื้อวัว","ไข่"]
     var vegetable = [   "กวางตุ้ง","กะหล่ำปลี","ข้าวโพดอ่อน","ขิง","คะน้า",
@@ -78,14 +86,10 @@ export default function Show_Info() {
                         "เม็ดมะม่วงหิมพานต์","หน่อไม้ฝรั่ง","เห็ด"    
                     ]
 
-                       
-
     var rating = []
-    rating.push({  อาหาร: "User",
-                        โรคหัวใจ: userinfo.value[0],
-                        โรคเบาหวาน: userinfo1.value1[0],
-                        โรคไต: userinfo2.value2[0],
-                        โรคความดันโลหิตสูง: userinfo3.value3[0],
+    rating.push({       อาหาร: "User",
+                        โรค: disease,
+
                         หมู: rating0,
                         ไก่: rating1,
                         ปลา: rating2,
@@ -118,12 +122,11 @@ export default function Show_Info() {
                         หน่อไม้ฝรั่ง: rating28,
                         เห็ด: rating29                    
     })
-    // console.log(rating);
+    console.log(rating[0].โรค);
 
     const Alert = () => {
-        // if(rating0 === 0 || rating1 === 0 || rating2 === 0  || rating3 === 0 || rating4 === 0 || rating5 === 0 || rating6 === 0 || rating7 === 0 || rating8 === 0 || rating9 === 0 || rating10 === 0 || rating11 === 0 || rating12 === 0 || rating13 === 0 || rating14 === 0 || rating15 === 0 || rating16 === 0 || rating17 === 0 || rating18 === 0 || rating19 === 0 || rating20 === 0 || rating21 === 0 || rating22 === 0 || rating23 === 0 || rating24 === 0 || rating25 === 0 || rating26 === 0 )  alert("โปรดระบุข้อมูลให้ครบถ้วน")
-        // else createPost()
-        createPost()
+        if(rating[0].โรค === "") alert("โปรดระบุโรคที่คุณมีอย่างน้อย 1 โรค")
+        else createPost()
     };
     
 
@@ -133,7 +136,12 @@ export default function Show_Info() {
             <form ><br/><br/><br/>
                 <div className="container">
                     <div className="card">
-                        <div className="card-header"> <p className="title">ระบุโรคของคุณ</p> </div>
+                        <div className="card-header"> 
+                            <Box>
+                                <p className="title" >ระบุโรคของคุณ</p> 
+                                <Cardbox> * ระบุขั้นต่ำ 1 โรค </Cardbox>
+                            </Box> 
+                        </div>          
                         <div className="card-body">
                             <Checkbox>
                                 <input style={{ verticalAlign: "super" }} type="checkbox" onChange={handleChange3} class="largerCheckbox"/>  
