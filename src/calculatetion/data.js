@@ -2,14 +2,20 @@ var food = require('./food.json');
 var user = require('./users.json');     
 var calculate = require("./calculate.js");
 
-var weight_user = calculate.Weight(user) 
-var weight_food = calculate.Weight(food) 
-var similar = calculate.similar_score 
-var result = calculate.similar_sort(weight_user,weight_food,similar,20)
 
 
-// console.log(user)
+// var fillter = calculate.Fillters("D",food)
+// var weight_user = calculate.Weights(user)
+// var weigh_food = calculate.Weights(fillter)
 
-module.exports = result;
+// var similar = calculate.Similar_score
+var result = calculate.Similar_sort(calculate.Weights(user),calculate.Weights(calculate.Fillters("D",food)),calculate.Similar_score,4)
+
+
+
+
+console.log(result)
+
+// module.exports = result;
 
 

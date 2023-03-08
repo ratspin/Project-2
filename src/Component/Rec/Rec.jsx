@@ -36,7 +36,10 @@ export default function Rec() {
     console.log("search onLink :", searchTerm);
   };
 
-  var cal_result = calculate.similar_sort(calculate.Weight(rating),calculate.Weight(data) ,calculate.similar_score ,20)
+  // var cal_result = calculate.Similar_sort(calculate.Weight(rating),calculate.Weight(data) ,calculate.similar_score ,20)
+
+  var cal_result = calculate.Similar_sort(calculate.Weights(rating),calculate.Weights(calculate.Fillters(rating[0].โรค,data)),calculate.Similar_score,20)
+
   var result= []
 
   for(var i = 0; i < cal_result.length; i++) {
