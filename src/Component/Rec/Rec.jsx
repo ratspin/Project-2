@@ -36,7 +36,7 @@ export default function Rec() {
     console.log("search onLink :", searchTerm);
   };
 
-  // var cal_result = calculate.Similar_sort(calculate.Weight(rating),calculate.Weight(data) ,calculate.similar_score ,20)
+  // var cal_result = calculate.Similar_sort(calculate.Weights(rating),calculate.Weights(data),calculate.Similar_score,105)
 
   var cal_result = calculate.Similar_sort(calculate.Weights(rating),calculate.Weights(calculate.Fillters(rating[0].โรค,data)),calculate.Similar_score,20)
 
@@ -51,7 +51,7 @@ export default function Rec() {
   result.push({food_img:food_img,food_nutr:food_nutr,food_ingr:food_ingr,food_name:food_name,food_similar:food_similar})
   }
 
-  console.log(rating[0].โรค);
+  console.log(state);
 
   var disease = ""
   if(rating[0].โรค === "A") disease = "โรคหัวใจ"

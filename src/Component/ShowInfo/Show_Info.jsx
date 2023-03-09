@@ -95,7 +95,7 @@ export default function Show_Info() {
                         ปลา: rating2,
                         กุ้ง: rating3,
                         หมึก: rating4,
-                        วัว: rating5,
+                        เนื้อวัว: rating5,
                         ไข่: rating6,
 
                         กวางตุ้ง: rating7,
@@ -129,6 +129,7 @@ export default function Show_Info() {
         else createPost()
     };
     
+    console.log(rating);
 
     return (
         <div>

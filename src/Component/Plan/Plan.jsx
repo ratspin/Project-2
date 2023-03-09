@@ -17,7 +17,6 @@ export default function Plan() {
   const navRef = useRef();
 
   var data = require("../../calculatetion/food.json");
-  var fooddb = require('../../calculatetion/food.json'); 
   var calculate = require("../../calculatetion/calculate.js");
 
   var name = [];
@@ -37,7 +36,7 @@ export default function Plan() {
     console.log("search onLink :", searchTerm);
   };
 
-  var cal_result = calculate.Similar_sort(calculate.Weights(rating),calculate.Weights(calculate.Fillters(rating[0].โรค,data)),calculate.Similar_score,20)
+  var cal_result = calculate.Similar_sort(calculate.Weights(rating),calculate.Weights(calculate.Fillters(rating[0].โรค,data)),calculate.Similar_score,40)
   var result= []
 
   for(var i = 0; i < cal_result.length; i++) {
@@ -46,7 +45,8 @@ export default function Plan() {
   var food_name = cal_result[i].food
   var food_similar = cal_result[i].similar_rate
   var food_nutr = "nutrients/"+ cal_result[i].food + ".png"
-  result.push({food_img:food_img,food_nutr:food_nutr,food_ingr:food_ingr,food_name:food_name,food_similar:food_similar})
+  var b = cal_result[i].มื้อเช้า
+  result.push({food_img:food_img,food_nutr:food_nutr,food_ingr:food_ingr,food_name:food_name,food_similar:food_similar,มื้อเช้า:b})
   }
 
   var meal = [{meal:"มื้อเช้า",img:"/meal/1.png"},{meal:"มื้อเที่ยง",img:"/meal/2.png"}, {meal:"มื้อเย็น",img:"/meal/3.png"}]
@@ -61,11 +61,26 @@ export default function Plan() {
     var day2 = [];
     var day3 = [];
 
-        for(var j = 0; j < 3 ; j ++){
+    day1.push(random_item(result))
+    day2.push(random_item(result))
+    day3.push(random_item(result))
+    // var tmp = 5555 
+
+    // while(day1[0].มื้อเช้า === 0)
+    // if(day1[0].มื้อเช้า === 0){
+    //   day1[0].replace(day1[0],random_item(result))
+    //   console.log(tmp)
+    // }
+
+        for(var j = 0; j < 2 ; j ++){
           day1.push(random_item(result))
           day2.push(random_item(result))
           day3.push(random_item(result))
         }
+
+
+      
+  // console.log(tmp)
   
   const text = meal.map((d,index) => {return <MealBox key={index}>
                                                 <img style={{ margin: "5px",height: "50px", width: "50px" }} key={index} src = {d.img} alt={d.meal}/> 
@@ -113,6 +128,7 @@ export default function Plan() {
         <RecipeListContainer>   
           {day1 !== [] &&day1.map((data,index) => {return <ShowResult key={index} data={data} />;})}
         </RecipeListContainer>
+        {/* {day1 !== [] &&day1.map((data,index) => {return <p key={index}  >{data.มื้อเช้า}</p>;})} */}
         <br/><br/><br/><hr/><br/>
         
         <DayBox>  

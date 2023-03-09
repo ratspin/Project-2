@@ -56,7 +56,7 @@ export default function Upload() {
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Apikey", "zEcGHT26R8S7j7vEkgB4pGe1xgHGuQkt");
+    myHeaders.append("Apikey", "BRS04Y3oivuXzOJpV7o88tZWJCa5GGuC");
 
     var raw = JSON.stringify({
       "file": base64
