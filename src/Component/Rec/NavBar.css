@@ -93,3 +93,39 @@ nav {
     text-align: start;
     margin: 2px 0;
   }
+
+
+
+.pageNumbers {
+	display: flex;
+	flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+	list-style: none;
+	}
+
+	.pageNumbers li {
+	padding: 10px;
+	border: 1px solid #FFA500;
+	cursor: pointer;
+	}
+
+	.pageNumbers li.active {
+	background-color: #ffcb6b;
+	color: black;
+	}
+
+	.pageNumbers li button {
+	background-color: transparent;
+	border: none;
+	color: rgb(0, 0, 0);
+	font-size: 1rem;
+	cursor: pointer;
+	}
+	.pageNumbers li button:hover {
+	background-color: white;
+	color: black;
+	}
+	.pageNumbers li button:focus {
+	outline: none;
+	}

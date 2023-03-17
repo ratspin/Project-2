@@ -1,9 +1,8 @@
 import React, { useRef,useState } from "react";
-import {Container,RecipeListContainer,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage,RecipeName} from './Styled'
+import {Container,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage,RecipeName} from './Styled'
 import { useLocation, useNavigate} from 'react-router-dom';
 import "./NavBar.css";
-import ShowResult from "../ShowResult/Show_Result"
-
+import RecPagination from './RecPagination'
 
 export default function Rec() {
   const [value, setValue] = useState("");
@@ -17,8 +16,6 @@ export default function Rec() {
   const navRef = useRef();
 
   var data = require("../../calculatetion/food.json");
-  var calculate = require("../../calculatetion/calculate.js");
-
   var name = [];
   for (var index = 0; index < data.length; index++) {
     var food = data[index]["อาหาร"];
@@ -35,23 +32,6 @@ export default function Rec() {
     createLink()
     console.log("search onLink :", searchTerm);
   };
-
-  // var cal_result = calculate.Similar_sort(calculate.Weights(rating),calculate.Weights(data),calculate.Similar_score,105)
-
-  var cal_result = calculate.Similar_sort(calculate.Weights(rating),calculate.Weights(calculate.Fillters(rating[0].โรค,data)),calculate.Similar_score)
-
-  var result= []
-
-  for(var i = 0; i < cal_result.length; i++) {
-  var food_img = "food/"+ cal_result[i].food + ".png"
-  var food_ingr = "ingredients/"+ cal_result[i].food + ".png"
-  var food_name = cal_result[i].food
-  var food_similar = cal_result[i].similar_rate
-  var food_nutr = "nutrients/"+ cal_result[i].food + ".png"
-  result.push({food_img:food_img,food_nutr:food_nutr,food_ingr:food_ingr,food_name:food_name,food_similar:food_similar})
-  }
-
-  // console.log(cal_result);
 
   var disease = ""
   if(rating[0].โรค === "A") disease = "โรคหัวใจ"
@@ -70,7 +50,6 @@ export default function Rec() {
   if(rating[0].โรค === "BCD") disease = "โรคเบาหวาน โรคความดันโลหิตสูง และโรคไต"
   if(rating[0].โรค === "ABCD") disease = "โรคหัวใจ โรคเบาหวาน โรคความดันโลหิตสูง และโรคไต"
 
-  
   return (
     <div>
       <NavContainer>
@@ -103,16 +82,14 @@ export default function Rec() {
         </Header>
       </NavContainer>
 
-
       <Container>
         <RecipeName>เมนูสำหรับผู้ที่มี</RecipeName>
         <div><RecipeName> {disease} </RecipeName>
          {/* <IconImg src="/icon/โรคหัวใจ.png" alt = "หมู"/>  */}
         </div>
         
-        <RecipeListContainer>
-          {result !== [] &&result.map((data,index) => {return <ShowResult key={index} data={data} />;})}
-      </RecipeListContainer>
+        <RecPagination data={rating}/>
+      
       </Container>
   </div>
   )
