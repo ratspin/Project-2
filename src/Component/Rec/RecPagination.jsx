@@ -8,7 +8,7 @@ export default function RecPagination(props) {
     const [currentPage, setcurrentPage] = useState(1);
     const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
     const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
-    const itemsPerPage = 5;
+    const itemsPerPage = 10;
     const pageNumberLimit = 5;
 
     const renderData = (data) => {
