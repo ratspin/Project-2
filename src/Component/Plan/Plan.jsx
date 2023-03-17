@@ -36,7 +36,7 @@ export default function Plan() {
     console.log("search onLink :", searchTerm);
   };
 
-  var cal_result = calculate.Similar_sort(calculate.Weights(rating),calculate.Weights(calculate.Fillters(rating[0].โรค,data)),calculate.Similar_score,40)
+  var cal_result = calculate.Similar_sort(calculate.Weights(rating),calculate.Weights(calculate.Fillters(rating[0].โรค,data)),calculate.Similar_score)
   var result= []
 
   for(var i = 0; i < cal_result.length; i++) {
@@ -49,21 +49,27 @@ export default function Plan() {
   result.push({food_img:food_img,food_nutr:food_nutr,food_ingr:food_ingr,food_name:food_name,food_similar:food_similar,มื้อเช้า:b})
   }
 
+  var result20 = []
+  for(var ind = 0 ; ind < 20 ; ind++){
+    result20.push(result[ind])
+  }
+
+
   var meal = [{meal:"มื้อเช้า",img:"/meal/1.png"},{meal:"มื้อเที่ยง",img:"/meal/2.png"}, {meal:"มื้อเย็น",img:"/meal/3.png"}]
 
-    function random_item() {
-        var items = [Math.floor(Math.random()*result.length)]; 
-        return result.splice(items,1)[0]
-            
-      }
+  function random_item() {
+      var items = [Math.floor(Math.random()*result20.length)]; 
+      return result20.splice(items,1)[0]
+          
+    }
    
     var day1 = [];
     var day2 = [];
     var day3 = [];
 
-    day1.push(random_item(result))
-    day2.push(random_item(result))
-    day3.push(random_item(result))
+    day1.push(random_item(result20))
+    day2.push(random_item(result20))
+    day3.push(random_item(result20))
     // var tmp = 5555 
 
     // while(day1[0].มื้อเช้า === 0)
@@ -73,14 +79,15 @@ export default function Plan() {
     // }
 
         for(var j = 0; j < 2 ; j ++){
-          day1.push(random_item(result))
-          day2.push(random_item(result))
-          day3.push(random_item(result))
+          day1.push(random_item(result20))
+          day2.push(random_item(result20))
+          day3.push(random_item(result20))
         }
 
 
       
-  // console.log(tmp)
+  console.log(result20)
+  console.log(result)
   
   const text = meal.map((d,index) => {return <MealBox key={index}>
                                                 <img style={{ margin: "5px",height: "50px", width: "50px" }} key={index} src = {d.img} alt={d.meal}/> 

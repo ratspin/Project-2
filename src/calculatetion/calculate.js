@@ -14,12 +14,14 @@ var Similar_score  = function(x,y){
 
 
 
-var Similar_sort  = function(user,food,similar_score,num_food){ 
+var Similar_sort  = function(user,food,similar_score){ 
     var similar_all  = [];
+    var count = 0
     for(var i = 0 ; i < food.length ; i ++ ){
             similar_all.push({  similar_rate : similar_score(user[0],food[i]) , food : food[i]["อาหาร"] ,การปรุง : food[i]["การปรุง"] , มื้อเช้า : food[i]["มื้อเช้า"] ,
                                 // โรค : food[i]["โรค"]
-                            });                       
+                            });  
+                            count ++                     
         }
 
     similar_all.sort(function(a,b){ 
@@ -28,7 +30,7 @@ var Similar_sort  = function(user,food,similar_score,num_food){
 
 
     var scores = [] ;
-    for(var i5 = 0 ; i5 < num_food ; i5++ ){
+    for(var i5 = 0 ; i5 < count ; i5++ ){
         scores.push(similar_all[i5]);
     }
 
