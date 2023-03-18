@@ -1,5 +1,5 @@
 import React,{ useState } from "react";
-import {Checkbox,IconImg} from './Styled'
+import {Checkbox,IconImg,RecipeName} from './Styled'
 import SearchSimilar from './SearchSimilar'
 
 export default function SearchChackbox(props) {
@@ -47,7 +47,22 @@ export default function SearchChackbox(props) {
     var food = require("../../calculatetion/food.json");
     var result = calculate.Fillters(disease,food);
     
-    console.log(result);
+    var diseases = ""
+    if(disease === "A") diseases = "โรคหัวใจ"
+    if(disease === "B") diseases = "โรคเบาหวาน"
+    if(disease === "C") diseases = "โรคความดันโลหิตสูง"
+    if(disease === "D") diseases = "โรคไต"
+    if(disease === "AB") diseases = "โรคหัวใจ และโรคเบาหวาน"
+    if(disease === "AC") diseases = "โรคหัวใจ และโรคความดันโลหิตสูง"
+    if(disease === "AD") diseases = "โรคหัวใจ และโรคไต"
+    if(disease === "BC") diseases = "โรคเบาหวาน และโรคความดันโลหิตสูง"
+    if(disease === "BD") diseases = "โรคเบาหวาน และโรคไต"
+    if(disease === "CD") diseases = "โรคความดันโลหิตสูง และโรคไต"
+    if(disease === "ABC") diseases = "โรคหัวใจ โรคเบาหวาน และโรคความดันโลหิตสูง"
+    if(disease === "ABD") diseases = "โรคหัวใจ โรคเบาหวาน และโรคไต"
+    if(disease === "ACD") diseases = "โรคหัวใจ โรคความดันโลหิตสูง และโรคไต"
+    if(disease === "BCD") diseases = "โรคเบาหวาน โรคความดันโลหิตสูง และโรคไต"
+    if(disease === "ABCD") diseases = "โรคหัวใจ โรคเบาหวาน โรคความดันโลหิตสูง และโรคไต"
 
     return (
         <>
@@ -78,6 +93,7 @@ export default function SearchChackbox(props) {
         </Checkbox>
         
         <br/><br/><hr/><br/><br/>
+        <RecipeName>ผลลัพธ์ที่ใกล้เคียง {diseases}</RecipeName> 
         <SearchSimilar data1 = {props.data} data2 = {result} />    
         </>
     );
