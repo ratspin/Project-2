@@ -29,10 +29,9 @@ export const Recipe = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     padding: 30px;
-    gap: 10px;
     justify-content: space-evenly;
-    margin-left: 140px;
-    margin-right: 90px;
+    margin-left: 13%;
+    margin-right: 10%;
 `;
 
 export  const RecipeContainer = styled.div`
@@ -132,3 +131,20 @@ export const ResultBox = styled.h2`
   text-align: center;
   height : 200px;
 `;
+
+export const IconImg = styled.img`
+  width: 50px;
+  height: 50px;
+  padding-top: 10px;
+  margin-right: 1rem;
+  margin-left: 1rem;
+`
+
+export const Checkbox = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: 15%;
+  margin-right: 15%;
+`

@@ -99,7 +99,7 @@ var Weights  = function(jsn){
 var Fillters  = function(disease,food){ 
     var tmp = []
     for(var i = 0; i < food.length; i++){
-        if(disease === food[i].โรคA)  tmp.push(food[i]);
+        if(disease === food[i].โรคA) tmp.push(food[i]);
         // {tmp.push(food[i]); tmp[i].โรค  = "A"  }   
         if(disease === food[i].โรคB) tmp.push(food[i]);
         //  {tmp.push(food[i]); tmp[i].โรค  = "B"  }   
@@ -129,6 +129,7 @@ var Fillters  = function(disease,food){
         //   {tmp.push(food[i]); tmp[i].โรค  = "BCD"  }   
         if(disease === food[i].โรคABCD) tmp.push(food[i]);
         //   {tmp.push(food[i]); tmp[i].โรค  = "ABCD"  }   
+        if(disease === "") tmp.push(food[i]);
     }
     return tmp;
 }
