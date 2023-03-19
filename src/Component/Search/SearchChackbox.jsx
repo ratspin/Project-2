@@ -93,7 +93,7 @@ export default function SearchChackbox(props) {
         </Checkbox>
         
         <br/><br/><hr/><br/><br/>
-        <RecipeName>ผลลัพธ์ที่ใกล้เคียง {diseases}</RecipeName> 
+        <RecipeName>เมนูทางเลือกที่แนะนำสำหรับผู้ป่วย: {diseases}</RecipeName> 
         <SearchSimilar data1 = {props.data} data2 = {result} />    
         </>
     );

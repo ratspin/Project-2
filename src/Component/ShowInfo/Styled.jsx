@@ -25,3 +25,7 @@ export const Box = styled.div`
     flex-direction: column;
 `
 
+export const Banner = styled.img`
+    width: 100%;
+    object-fit: cover;
+`

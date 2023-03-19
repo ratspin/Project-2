@@ -2,7 +2,7 @@ import React,{ useState } from "react";
 import Rating from '@mui/material/Rating';
 import './Show_Info.css';
 import { useNavigate } from 'react-router-dom';
-import {IconImg,IconBox,Checkbox,Cardbox,Box} from './Styled'
+import {IconImg,IconBox,Checkbox,Cardbox,Box,Banner} from './Styled'
 
 export default function Show_Info() {
     const navigate = useNavigate();
@@ -133,6 +133,8 @@ export default function Show_Info() {
 
     return (
         <div>
+
+        <Banner src="/banner.png" />    
 
             <form ><br/><br/><br/>
                 <div className="container">
@@ -400,7 +402,7 @@ export default function Show_Info() {
 
                  {/* <input type="submit" className="form-submit-button"   value="บันทึกข้อมูล" /><br/> <br/> */}
                {/* <input type="submit" className="form-submit-button"   value="บันทึกข้อมูล" onDoubleClick={() =>{createPost()}}/><br/> <br/> */}
-                <div className="form-submit-button" onClick={() =>Alert()}>บันทึกข้อมูล</div><br/> <br/>
+                <div className="form-submit-button" onClick={() =>Alert()}>แนะนำนำอาหาร</div><br/> <br/>
             </form>
         </div>
 );

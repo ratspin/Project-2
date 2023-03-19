@@ -11,19 +11,13 @@ export default function Search() {
   const [value, setValue] = useState("");
   const { state } = useLocation();
   const navigate = useNavigate();
-  const createLink = () => {
-    navigate("/search", { state: [{ value }, { rating }] });
-  };
-  const createRec = () => {
-    navigate("/rec", { state: { rating } });
-  };
-  const createPlan = () => {
-    navigate("/plan", { state: { rating } });
-  };
-  const createUpload = () => {
-    navigate("/Upload", { state: { rating } });
-  };
-  const rating = state[1].rating;
+  const createLink = () =>{navigate('/search',{state: [{value},{rating},{disease}]})}
+  const createRec = () =>{navigate('/rec',{state: {rating}})}
+  const createPlan = () =>{navigate('/plan',{state: [{rating},{disease}]})}
+  const createUpload = () =>{navigate('/Upload',{state: [{rating},{disease}]})}
+  const disease = state[2].disease
+  const rating = state[1].rating
+
   const navRef = useRef();
 
   var name = [];
@@ -61,7 +55,7 @@ export default function Search() {
           <div>
             <SearchBox>
               <SearchIcon src="/search-icon.svg" onClick={() => onLink(value)}/>
-              <SearchInput placeholder="ค้นหา" type="text"value={value} onChange={(e) => setValue(e.target.value)}/>
+              <SearchInput placeholder="ค้นหาเมนูอาหาร" type="text"value={value} onChange={(e) => setValue(e.target.value)}/>
             </SearchBox>
             <div className="dropdown" style={{ width: '280px'}} >
             {name.filter((item) => {

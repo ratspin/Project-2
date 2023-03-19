@@ -37,25 +37,26 @@ export  const DialogImage = styled.img`
 
 export const RecipeName = styled.span`
   font-size: 25px;
-  font-weight: 600;
+  font-weight: 400;
   color: black;
-  margin: 10px 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: center;
-  vertical-align : super;
+  margin: 5px;
+  border : solid 2px #33356b;
+  border-radius: 3px;
+  padding: 10px 20px;
+  width : 78%;
   `;
   
 export const SeeMoreText = styled.span`
-  color: #eb3300;
+  color: #ff0000;
   font-size: 18px;
   text-align: center;
-  border: solid 1px #eb3300;
+  border: solid 3px #ff0000;
   border-radius: 3px;
-  padding: 10px 15px;
+  padding: 10px;
   cursor: pointer;
-  margin-bottom: 12px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height :25px;
 `;
 
 export const IngredientsText = styled(SeeMoreText)`

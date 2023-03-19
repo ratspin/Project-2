@@ -1,5 +1,5 @@
 import React, { useRef,useState } from "react";
-import {Container,RecipeListContainer,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage,MealBox,DayBox,Day} from './Styled'
+import {Container,RecipeListContainer,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage,MealBox,DayBox,Day,Name} from './Styled'
 import { useLocation, useNavigate} from 'react-router-dom';
 import "./NavBar.css";
 import ShowResult from "../ShowResult/Show_Result"
@@ -9,11 +9,12 @@ export default function Plan() {
   const [value, setValue] = useState("");
   const {state} = useLocation();
   const navigate = useNavigate();
-  const createLink = () =>{navigate('/search',{state: [{value},{rating}]})}
+  const createLink = () =>{navigate('/search',{state: [{value},{rating},{disease}]})}
   const createRec = () =>{navigate('/rec',{state: {rating}})}
-  const createPlan = () =>{navigate('/plan',{state: {rating}})}
-  const createUpload = () =>{navigate('/upload',{state: {rating}})}
-  const rating = state.rating
+  const createPlan = () =>{navigate('/plan',{state: [{rating},{disease}]})}
+  const createUpload = () =>{navigate('/Upload',{state: [{rating},{disease}]})}
+  const rating = state[0].rating
+  const disease = state[1].disease
   const navRef = useRef();
 
   var data = require("../../calculatetion/food.json");
@@ -85,9 +86,7 @@ export default function Plan() {
         }
 
 
-      
-  console.log(result20)
-  console.log(result)
+    
   
   const text = meal.map((d,index) => {return <MealBox key={index}>
                                                 <img style={{ margin: "5px",height: "50px", width: "50px" }} key={index} src = {d.img} alt={d.meal}/> 
@@ -109,7 +108,7 @@ export default function Plan() {
           <div>
             <SearchBox>
               <SearchIcon src="/search-icon.svg" onClick={() => onLink(value)}/>
-              <SearchInput placeholder="ค้นหา" type="text"value={value} onChange={(e) => setValue(e.target.value)}/>
+              <SearchInput placeholder="ค้นหาเมนูอาหาร" type="text"value={value} onChange={(e) => setValue(e.target.value)}/>
             </SearchBox>
             <div className="dropdown" style={{ width: '280px'}}>
             {name.filter((item) => {
@@ -124,10 +123,14 @@ export default function Plan() {
       </NavContainer>
 
       <Container>
+        <Name>
+              แผนการรับประทานอาหารสำหรับผู้ป่วย : {disease}
+        </Name>             
+        <br/><hr/><br/>            
         <DayBox>  
           <Day >วันที่ 1</Day>    
             <RecipeListContainer>{text}</RecipeListContainer>
-            <div  style={{color: '#14BE1A' , cursor: "pointer"}} onClick={() => createPlan()} >
+            <div  style={{color: '#ff8412' , cursor: "pointer" ,padingTop: '10px'}} onClick={() => createPlan()} >
               เปลี่ยนแผนการรับประทาน <br/>  
               <img style={{ height: "40px", width: "40px" }} src ="/refresh.png"  alt = "555"  />
             </div><br/> <br/>  

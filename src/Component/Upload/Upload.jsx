@@ -14,12 +14,12 @@ export default function Upload() {
 
   const {state} = useLocation();
   const navigate = useNavigate();
-  const createSearch = () =>{navigate('/search',{state: [{value},{rating}]})}
+  const createSearch = () =>{navigate('/search',{state: [{value},{rating},{disease}]})}
   const createRec = () =>{navigate('/rec',{state: {rating}})}
-  const createPlan = () =>{navigate('/plan',{state: {rating}})}
-  const createUpload = () =>{navigate('/upload',{state: {rating}})}
-  
-  const rating = state.rating
+  const createPlan = () =>{navigate('/plan',{state: [{rating},{disease}]})}
+  const createUpload = () =>{navigate('/Upload',{state: [{rating},{disease}]})}
+  const rating = state[0].rating
+  const disease = state[1].disease
   const navRef = useRef();
 
   var data = require("../../calculatetion/food.json");
@@ -106,7 +106,7 @@ export default function Upload() {
           <div>
             <SearchBox>
               <SearchIcon src="/search-icon.svg" onClick={() => onLink(value)}/>
-              <SearchInput placeholder="ค้นหา" type="text"value={value} onChange={(e) => setValue(e.target.value)}/>
+              <SearchInput placeholder="ค้นหาเมนูอาหาร" type="text"value={value} onChange={(e) => setValue(e.target.value)}/>
             </SearchBox>
             <div className="dropdown" style={{ width: '280px'}} >
             {name.filter((item) => {

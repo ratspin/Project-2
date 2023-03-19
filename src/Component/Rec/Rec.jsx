@@ -1,5 +1,5 @@
 import React, { useRef,useState } from "react";
-import {Container,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage,RecipeName} from './Styled'
+import {Container,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage,RecipeName,SeeMoreText} from './Styled'
 import { useLocation, useNavigate} from 'react-router-dom';
 import "./NavBar.css";
 import RecPagination from './RecPagination'
@@ -8,10 +8,10 @@ export default function Rec() {
   const [value, setValue] = useState("");
   const {state} = useLocation();
   const navigate = useNavigate();
-  const createLink = () =>{navigate('/search',{state: [{value},{rating}]})}
+  const createLink = () =>{navigate('/search',{state: [{value},{rating},{disease}]})}
   const createRec = () =>{navigate('/rec',{state: {rating}})}
-  const createPlan = () =>{navigate('/plan',{state: {rating}})}
-  const createUpload = () =>{navigate('/Upload',{state: {rating}})}
+  const createPlan = () =>{navigate('/plan',{state: [{rating},{disease}]})}
+  const createUpload = () =>{navigate('/Upload',{state: [{rating},{disease}]})}
   const rating = state.rating
   const navRef = useRef();
 
@@ -68,7 +68,7 @@ export default function Rec() {
           <div>
             <SearchBox>
               <SearchIcon src="/search-icon.svg" onClick={() => onLink(value)}/>
-              <SearchInput placeholder="ค้นหา" type="text"value={value} onChange={(e) => setValue(e.target.value)}/>
+              <SearchInput placeholder="ค้นหาเมนูอาหาร" type="text"value={value} onChange={(e) => setValue(e.target.value)}/>
             </SearchBox>
             <div className="dropdown" style={{ width: '280px'}}>
             {name.filter((item) => {
@@ -83,10 +83,14 @@ export default function Rec() {
       </NavContainer>
 
       <Container>
-        <RecipeName>เมนูสำหรับผู้ที่มี</RecipeName>
-        <div><RecipeName> {disease} </RecipeName>
-         {/* <IconImg src="/icon/โรคหัวใจ.png" alt = "หมู"/>  */}
+        <div style={{ display: 'flex', justifyContent: 'space-between' ,marginLeft : "2%",marginRight : "3%" , flexWrap: "wrap"}}>             
+            <RecipeName>
+              ผลการแนะนำเมนูอาหารสำหรับผู้ป่วย : {disease} <br/> เรียงลำดับตามความชอบของผู้ใช้
+            </RecipeName> 
+            <SeeMoreText>แก้ไขการเลือก</SeeMoreText> 
         </div>
+         
+        
         
         <RecPagination data={rating}/>
       

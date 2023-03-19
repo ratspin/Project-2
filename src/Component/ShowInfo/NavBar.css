@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap");
+
+
+:root {
+	--mainColor: #FFA500;
+	--mainColorLight: #FFA500;
+	--secondaryColor: #db2b39;
+	--textColor: rgb(0, 0, 0);
+}
+
+.a {
+	margin: 10px;
+	color: var(--textColor);
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.a:hover {
+	color: var(--secondaryColor);
+}
+
+    .nav-btn {
+	/* padding: 5px; */
+	cursor: pointer;
+	background: transparent;
+	border: none;
+	outline: none;
+	color: var(--textColor);
+	visibility: hidden;
+	opacity: 0;
+	font-size: 1.8rem;
+}
+
+
+nav {
+	display: flex;
+	align-items: center;
+    flex-direction: row;
+	font-size: large;
+}
+
+@media only screen and (max-width: 1024px) {
+	.nav-btn {
+		visibility: visible;
+		opacity: 1;
+	}
+
+	nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1.5rem;
+		background-color: var(--mainColor);
+		transition: 1s;
+		transform: translateY(-100vh);
+	}
+
+	.responsive_nav {
+		transform: none;
+	}
+
+	nav .nav-close-btn {
+		position: absolute;
+		top: 2rem;
+		right: 2rem;
+	}
+
+	nav a {
+		font-size: 1.5rem;
+	}
+}
+
+.dropdown {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+	width: 90%;
+  }
+  
+  .dropdown:empty {
+    border: none;
+  }
+  
+  .dropdown-row {
+    cursor: pointer;
+    text-align: start;
+    margin: 2px 0;
+  }
+
+
+
+.pageNumbers {
+	display: flex;
+	flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+	list-style: none;
+	}
+
+	.pageNumbers li {
+	padding: 10px;
+	border: 1px solid #FFA500;
+	cursor: pointer;
+	}
+
+	.pageNumbers li.active {
+	background-color: #ffcb6b;
+	color: black;
+	}
+
+	.pageNumbers li button {
+	background-color: transparent;
+	border: none;
+	color: rgb(0, 0, 0);
+	font-size: 1rem;
+	cursor: pointer;
+	}
+	.pageNumbers li button:hover {
+	background-color: white;
+	color: black;
+	}
+	.pageNumbers li button:focus {
+	outline: none;
+	}

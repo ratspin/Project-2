@@ -167,8 +167,16 @@ export const NavBox = styled.div`
 export const Day = styled.div`
   width: 15%;
   margin-top: 1rem;
-  background-color: gray;
+  background-color: #2abd1fc7;
   color: #fff;
   padding: 20px 1rem;
   font-size: 1.5rem;
 `;
+
+export const Name = styled.span`
+  font-size: 25px;
+  font-weight: 400;
+  color: black;
+  margin: 5px;
+  padding: 10px;
+  `;

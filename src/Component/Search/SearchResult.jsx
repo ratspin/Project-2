@@ -49,7 +49,7 @@ export default function SearchResult(props) {
 
     return (
         <>
-            <RecipeName>ผลลัพธ์ของคุณ : {search_name}</RecipeName> 
+            <RecipeName>ผลลัพธ์การค้นหาเมนูอาหาร : {search_name}</RecipeName> 
             {search_check}
         </>
     );
