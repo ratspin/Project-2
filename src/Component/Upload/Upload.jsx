@@ -83,7 +83,7 @@ export default function Upload() {
       alert("โปรดเลือกไฟล์ใหม่ ระบบรองรับไฟล์ขนาดไม่เกิน 1 MB")
     }
     else if(value === ""){
-      alert("โปรดเลือกไฟล์ใหม่ ระบบรองรับไฟล์ขนาดไม่เกิน 1 MB")
+      alert("โปรดเลือกไฟล์")
     }
     else{
       createSearch()

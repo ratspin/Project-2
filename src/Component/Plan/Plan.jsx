@@ -1,4 +1,4 @@
-import React, { useRef,useState } from "react";
+import React, { useRef,useState,useLayoutEffect } from "react";
 import {Container,RecipeListContainer,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage,MealBox,DayBox,Day,Name} from './Styled'
 import { useLocation, useNavigate} from 'react-router-dom';
 import "./NavBar.css";
@@ -95,71 +95,81 @@ export default function Plan() {
  
   return (
     <div>
-      <NavContainer>
-        <Header>
-          <NavBox>
-            <a href="/info"><RecipeImage src="/3.png" /></a>
-            <nav ref={navRef}>
-              <div className="a" onClick={() => createRec()} > แนะนำอาหาร</div>
-              <div className="a" onClick={() => createPlan()} >วางแผนการรับประทาน</div>
-              <div className="a" onClick={() => createUpload()} >ค้นหาด้วยรูป</div>
-            </nav>
-          </NavBox>
-          <div>
-            <SearchBox>
-              <SearchIcon src="/search-icon.svg" onClick={() => onLink(value)}/>
-              <SearchInput placeholder="ค้นหาเมนูอาหาร" type="text"value={value} onChange={(e) => setValue(e.target.value)}/>
-            </SearchBox>
-            <div className="dropdown" style={{ width: '280px'}}>
-            {name.filter((item) => {
-              const searchTerm = value.toLowerCase();
-              const fullName = item.name.toLowerCase();
-                return (searchTerm &&fullName.startsWith(searchTerm) &&fullName !== searchTerm);}).slice(0, 10)
-                .map((item,index) => (
-                <div style={{ cursor: 'pointer' }} onClick={() => onSearch(item.name)} key={index}>{item.name}</div>))}
+      <Wrapper>
+        <NavContainer>
+          <Header>
+            <NavBox>
+              <a href="/info"><RecipeImage src="/3.png" /></a>
+              <nav ref={navRef}>
+                <div className="a" onClick={() => createRec()} > แนะนำอาหาร</div>
+                <div className="a" onClick={() => createPlan()} >วางแผนการรับประทาน</div>
+                <div className="a" onClick={() => createUpload()} >ค้นหาด้วยรูป</div>
+              </nav>
+            </NavBox>
+            <div>
+              <SearchBox>
+                <SearchIcon src="/search-icon.svg" onClick={() => onLink(value)}/>
+                <SearchInput placeholder="ค้นหาเมนูอาหาร" type="text"value={value} onChange={(e) => setValue(e.target.value)}/>
+              </SearchBox>
+              <div className="dropdown" style={{ width: '280px'}}>
+              {name.filter((item) => {
+                const searchTerm = value.toLowerCase();
+                const fullName = item.name.toLowerCase();
+                  return (searchTerm &&fullName.startsWith(searchTerm) &&fullName !== searchTerm);}).slice(0, 10)
+                  .map((item,index) => (
+                  <div style={{ cursor: 'pointer' }} onClick={() => onSearch(item.name)} key={index}>{item.name}</div>))}
+              </div>
             </div>
-          </div>
-        </Header>
-      </NavContainer>
+          </Header>
+        </NavContainer>
 
-      <Container>
-        <Name>
-              แผนการรับประทานอาหารสำหรับผู้ป่วย : {disease}
-        </Name>             
-        <br/><hr/><br/>            
-        <DayBox>  
-          <Day >วันที่ 1</Day>    
-            <RecipeListContainer>{text}</RecipeListContainer>
-            <div  style={{color: '#ff8412' , cursor: "pointer" ,padingTop: '10px'}} onClick={() => createPlan()} >
-              เปลี่ยนแผนการรับประทาน <br/>  
-              <img style={{ height: "40px", width: "40px" }} src ="/refresh.png"  alt = "555"  />
-            </div><br/> <br/>  
-        </DayBox>                   
-        <RecipeListContainer>   
-          {day1 !== [] &&day1.map((data,index) => {return <ShowResult key={index} data={data} />;})}
-        </RecipeListContainer>
-        {/* {day1 !== [] &&day1.map((data,index) => {return <p key={index}  >{data.มื้อเช้า}</p>;})} */}
-        <br/><br/><br/><hr/><br/>
-        
-        <DayBox>  
-          <Day >วันที่ 2</Day>    
-            <RecipeListContainer>{text}</RecipeListContainer>
-          <Day style={{ backgroundColor: 'white'}} >วันที่ 2</Day>    
-        </DayBox>    
-        <RecipeListContainer>
-          {day2 !== [] &&day2.map((data,index) => {return <ShowResult key={index} data={data} />;})}
-        </RecipeListContainer>
-        <br/><br/><br/><hr/><br/>
+        <Container>
+          <Name>
+                แผนการรับประทานอาหารสำหรับผู้ป่วย : {disease}
+          </Name>             
+          <br/><hr/><br/>            
+          <DayBox>  
+            <Day >วันที่ 1</Day>    
+              <RecipeListContainer>{text}</RecipeListContainer>
+              <div  style={{color: '#ff8412' , cursor: "pointer" ,padingTop: '10px'}} onClick={() => createPlan()} >
+                สุ่มเมนูใหม่ <br/>  
+                <img style={{ height: "40px", width: "40px" }} src ="/refresh.png"  alt = "555"  />
+              </div><br/> <br/>  
+          </DayBox>                   
+          <RecipeListContainer>   
+            {day1 !== [] &&day1.map((data,index) => {return <ShowResult key={index} data={data} />;})}
+          </RecipeListContainer>
+          {/* {day1 !== [] &&day1.map((data,index) => {return <p key={index}  >{data.มื้อเช้า}</p>;})} */}
+          <br/><br/><br/><hr/><br/>
+          
+          <DayBox>  
+            <Day >วันที่ 2</Day>    
+              <RecipeListContainer>{text}</RecipeListContainer>
+            <Day style={{ backgroundColor: 'white'}} >วันที่ 2</Day>    
+          </DayBox>    
+          <RecipeListContainer>
+            {day2 !== [] &&day2.map((data,index) => {return <ShowResult key={index} data={data} />;})}
+          </RecipeListContainer>
+          <br/><br/><br/><hr/><br/>
 
-        <DayBox>  
-          <Day >วันที่ 3</Day>    
-            <RecipeListContainer>{text}</RecipeListContainer>
-          <Day style={{ backgroundColor: 'white'}} >วันที่ 3</Day>    
-        </DayBox>    
-        <RecipeListContainer>
-          {day3 !== [] &&day3.map((data,index) => {return <ShowResult key={index} data={data} />;})}
-        </RecipeListContainer>
-      </Container>
+          <DayBox>  
+            <Day >วันที่ 3</Day>    
+              <RecipeListContainer>{text}</RecipeListContainer>
+            <Day style={{ backgroundColor: 'white'}} >วันที่ 3</Day>    
+          </DayBox>    
+          <RecipeListContainer>
+            {day3 !== [] &&day3.map((data,index) => {return <ShowResult key={index} data={data} />;})}
+          </RecipeListContainer>
+        </Container>
+      </Wrapper>
   </div>
   )
 }
+
+const Wrapper = ({ children }) => {
+  const location = useLocation();
+  useLayoutEffect(() => {
+    document.documentElement.scrollTo(0, 0);
+  }, [location.pathname]);
+  return children;
+};

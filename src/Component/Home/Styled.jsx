@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 
 export const HeaderCon = styled.section`
-    height: 750px;
+    height: 100%;
+    height:100vh;
     background: url(/tom-yum-kung.jpg);
     box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.6);
-    border-bottom: 3px solid #222;
+    /* border-bottom: 3px solid #222; */
     background-position: center;
     background-size: cover;
 `

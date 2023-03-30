@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef,useState,useLayoutEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {Container,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage,} from "./Styled";
 import "./NavBar.css";
@@ -39,6 +39,7 @@ export default function Search() {
 
   return (
     <div>
+      <Wrapper>
       <NavContainer>
         <Header>
           <NavBox>
@@ -73,6 +74,15 @@ export default function Search() {
         <SearchResult data = {state[0].value}/>
         <SearchChackbox data = {state[0].value}/>           
       </Container>
+      </Wrapper>
     </div>
   );
 }
+
+const Wrapper = ({ children }) => {
+  const location = useLocation();
+  useLayoutEffect(() => {
+    document.documentElement.scrollTo(0, 0);
+  }, [location.pathname]);
+  return children;
+};

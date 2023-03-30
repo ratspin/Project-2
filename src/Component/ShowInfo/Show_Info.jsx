@@ -1,4 +1,4 @@
-import React,{ useState } from "react";
+import React, { useState,useLayoutEffect,useLocation } from "react";
 import Rating from '@mui/material/Rating';
 import './Show_Info.css';
 import { useNavigate } from 'react-router-dom';
@@ -133,9 +133,8 @@ export default function Show_Info() {
 
     return (
         <div>
-
-        <Banner src="/banner.png" />    
-
+            <Wrapper>
+            <Banner src="/banner.png" />    
             <form ><br/><br/><br/>
                 <div className="container">
                     <div className="card">
@@ -402,9 +401,17 @@ export default function Show_Info() {
 
                  {/* <input type="submit" className="form-submit-button"   value="บันทึกข้อมูล" /><br/> <br/> */}
                {/* <input type="submit" className="form-submit-button"   value="บันทึกข้อมูล" onDoubleClick={() =>{createPost()}}/><br/> <br/> */}
-                <div className="form-submit-button" onClick={() =>Alert()}>แนะนำนำอาหาร</div><br/> <br/>
+                <div className="form-submit-button" onClick={() =>Alert()}>แนะนำอาหาร</div><br/> <br/>
             </form>
+            </Wrapper>
         </div>
 );
 }
 
+const Wrapper = ({ children }) => {
+    const location = useLocation();
+    useLayoutEffect(() => {
+      document.documentElement.scrollTo(0, 0);
+    }, [location.pathname]);
+    return children;
+  };

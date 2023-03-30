@@ -1,4 +1,4 @@
-import React, { useRef,useState } from "react";
+import React, { useRef,useState,useLayoutEffect } from "react";
 import {Container,NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage,RecipeName,SeeMoreText} from './Styled'
 import { useLocation, useNavigate} from 'react-router-dom';
 import "./NavBar.css";
@@ -52,6 +52,7 @@ export default function Rec() {
 
   return (
     <div>
+      <Wrapper>
       <NavContainer>
         <Header>
           <NavBox>
@@ -87,14 +88,23 @@ export default function Rec() {
             <RecipeName>
               ผลการแนะนำเมนูอาหารสำหรับผู้ป่วย : {disease} <br/> เรียงลำดับตามความชอบของผู้ใช้
             </RecipeName> 
-            <SeeMoreText>แก้ไขการเลือก</SeeMoreText> 
+            <SeeMoreText onClick={() =>navigate('/info')} >แก้ไขการเลือก</SeeMoreText> 
         </div>
          
-        
         
         <RecPagination data={rating}/>
       
       </Container>
+      </Wrapper>
   </div>
   )
 }
+
+
+const Wrapper = ({ children }) => {
+  const location = useLocation();
+  useLayoutEffect(() => {
+    document.documentElement.scrollTo(0, 0);
+  }, [location.pathname]);
+  return children;
+};
