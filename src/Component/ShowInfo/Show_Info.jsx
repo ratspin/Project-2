@@ -1,7 +1,7 @@
-import React, { useState,useLayoutEffect,useLocation } from "react";
+import React, { useState,useLayoutEffect } from "react";
 import Rating from '@mui/material/Rating';
 import './Show_Info.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 import {IconImg,IconBox,Checkbox,Cardbox,Box,Banner} from './Styled'
 
 export default function Show_Info() {

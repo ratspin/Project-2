@@ -17,8 +17,8 @@ export default function Plan() {
   const disease = state[1].disease
   const navRef = useRef();
 
-  var data = require("../../calculatetion/food.json");
-  var calculate = require("../../calculatetion/calculate.js");
+  var data = require("../../calculation/food.json");
+  var calculate = require("../../calculation/calculate.js");
 
   var name = [];
   for (var index = 0; index < data.length; index++) {

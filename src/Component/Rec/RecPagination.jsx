@@ -37,8 +37,8 @@ export default function RecPagination(props) {
     });
 
     var rating = props.data
-    var calculate = require("../../calculatetion/calculate.js");
-    var food = require("../../calculatetion/food.json");
+    var calculate = require("../../calculation/calculate.js");
+    var food = require("../../calculation/food.json");
     useEffect(() => { 
         var cal_result = calculate.Similar_sort(calculate.Weights(rating),calculate.Weights(calculate.Fillters(rating[0].โรค,food)),calculate.Similar_score)
         var result= []

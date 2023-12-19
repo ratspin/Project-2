@@ -5,7 +5,7 @@ import "./NavBar.css";
 import SearchResult from './SearchResult'
 import SearchChackbox from './SearchChackbox'
 
-var data = require("../../calculatetion/food.json");
+var data = require("../../calculation/food.json");
 
 export default function Search() {
   const [value, setValue] = useState("");

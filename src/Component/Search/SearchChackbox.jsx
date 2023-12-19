@@ -43,8 +43,8 @@ export default function SearchChackbox(props) {
     if(userinfo3.value3[0] === "C")  disease = disease + userinfo3.value3[0]
     if(userinfo2.value2[0] === "D")  disease = disease + userinfo2.value2[0]
 
-    var calculate = require("../../calculatetion/calculate.js");
-    var food = require("../../calculatetion/food.json");
+    var calculate = require("../../calculation/calculate.js");
+    var food = require("../../calculation/food.json");
     var result = calculate.Fillters(disease,food);
     
     var diseases = ""

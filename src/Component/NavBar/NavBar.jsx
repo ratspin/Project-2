@@ -4,7 +4,7 @@ import {NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage}
 import { useNavigate } from 'react-router-dom';
 import "./NavBar.css";
 
-var data = require("../../calculatetion/food.json");
+var data = require("../../calculation/food.json");
 
 export default function NavBar() {
   const [value, setValue] = useState("");

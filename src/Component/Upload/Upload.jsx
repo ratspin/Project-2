@@ -22,7 +22,7 @@ export default function Upload() {
   const disease = state[1].disease
   const navRef = useRef();
 
-  var data = require("../../calculatetion/food.json");
+  var data = require("../../calculation/food.json");
   var name = [];
   for (var index = 0; index < data.length; index++) {
     var food = data[index]["อาหาร"];

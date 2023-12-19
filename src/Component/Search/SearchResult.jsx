@@ -1,6 +1,6 @@
 import React from 'react';
 import { Recipe,RecipeName,RecipeContainer,ResultBox,CoverImage,} from "./Styled";
-var data = require("../../calculatetion/food.json");
+var data = require("../../calculation/food.json");
 
 export default function SearchResult(props) {
     const search_name = props.data;

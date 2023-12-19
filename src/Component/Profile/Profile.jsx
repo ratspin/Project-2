@@ -4,7 +4,7 @@ import {NavContainer,Header,NavBox,SearchBox,SearchIcon,SearchInput,RecipeImage,
 // import NavBar from '../NavBar/NavBar'
 import './Profile.css';
 // import { FaBars, FaTimes } from "react-icons/fa";
-var data = require("../../calculatetion/food.json");
+var data = require("../../calculation/food.json");
 
 export default function Profile() {
   const [showInfo, setShowInfo] = useState(false);

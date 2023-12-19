@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./style.css";
 import ShowResult from "../ShowResult/Show_Result"
 import {RecipeListContainer} from './Styled'
-var cal_result = require("../../calculatetion/data");
+var cal_result = require("../../calculation/data");
 
 
 
